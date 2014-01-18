@@ -1,0 +1,459 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral (Default) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEUD)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Centrala.ico"
+IDR_NOCONNECTION        ICON    DISCARDABLE     "res\\icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Info"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Centrala version 1.0 by\nBarbulovski Boris",IDC_STATIC,
+                    40,10,120,16,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002",IDC_STATIC,40,36,119,8
+    DEFPUSHBUTTON   "&Close",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_CENTRALA_DIALOG DIALOGEX 0, 0, 268, 146
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Centrala Server.."
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "&Port:",IDC_STATIC,22,9,16,8
+    COMBOBOX        IDC_COMMPORT,46,7,67,52,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_MSCOMM,"{648A5600-2C6E-101B-82B6-000000000014}",
+                    WS_TABSTOP,7,7,25,23
+    PUSHBUTTON      "&Start",IDC_START,150,7,50,14
+    PUSHBUTTON      "S&top",IDC_STOP,206,7,50,14,WS_DISABLED
+    RTEXT           "Number of recived characters: 0",IDC_COUNT,139,130,121,
+                    10,SS_SUNKEN
+    CONTROL         "List1",IDC_LIST,"SysListView32",WS_BORDER | WS_TABSTOP,
+                    7,27,254,100
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_CENTRALA_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 261
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 139
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_CENTRALA_DIALOG DLGINIT
+BEGIN
+    IDC_COMMPORT, 0x403, 7, 0
+0x6f43, 0x6d6d, 0x3120, "\000" 
+    IDC_COMMPORT, 0x403, 7, 0
+0x6f43, 0x6d6d, 0x3220, "\000" 
+    IDC_COMMPORT, 0x403, 7, 0
+0x6f43, 0x6d6d, 0x3320, "\000" 
+    IDC_COMMPORT, 0x403, 7, 0
+0x6f43, 0x6d6d, 0x3420, "\000" 
+    IDC_MSCOMM, 0x376, 102, 0
+0x0013, 0x0000, 0x0043, 0x006f, 0x0070, 0x0079, 0x0072, 0x0069, 0x0067, 
+0x0068, 0x0074, 0x0020, 0x0028, 0x0063, 0x0029, 0x0020, 0x0031, 0x0039, 
+0x0039, 0x0034, 0x0020, 0x4321, 0x1234, 0x0008, 0x0000, 0x03ed, 0x0000, 
+0x03ed, 0x0000, 0x5601, 0x648a, 0x0000, 0x0006, 0x0000, 0x0001, 0x0400, 
+0x0000, 0x0200, 0x0001, 0x2580, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 
+0x0002, 0x0000, 0x003f, 0x0000, 0x0005, 0x0000, 
+    0
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "04090000"
+        BEGIN
+            VALUE "Comments", "Software developed for Tabak Osiguruvanje\0"
+            VALUE "CompanyName", "BokiCSoft - Boris Barbulovski\0"
+            VALUE "FileDescription", "CentralaServer Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "Centrala\0"
+            VALUE "LegalCopyright", "Copyright (C) 2003\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Centrala.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Centrala Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 0
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_POPUP_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "POPUP"
+    BEGIN
+        MENUITEM "Show Program",                ID_POPUP_SHOWPROGRAM
+        MENUITEM "&Informations",               ID_POPUP_INFO
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit",                       ID_POPUP_EXIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About Centrala..."
+    IDS_VREME               "Time"
+    IDS_LOKAL               "Local"
+    IDS_TELEFONSKI_BROJ     "Tel. number"
+    IDS_IMPULSI             "Impulses"
+    IDS_SEKUNDI             "Seconds"
+    IDS_OCEKUVANO           "Expected %u, recieved %u. In log file: %s"
+    IDS_BROJ_PRIMENI_KARAKTERI "Number of recieved characters: %u"
+    IDS_GRESKA_PRI_DAO      "Error in initializing DAO database system,\nplease check is DAO 3.6 is installed."
+    IDS_GRESKA_PRI_CENTRALA_MDB 
+                            "Error in initializing the Centrala.mdb,\nplease check if file 'centrala.mdb' exist."
+    IDS_GRESKA_PRI_MSCOMM   "Error at creating main window.\nPlease check if you have installed MsComm.OCX activex control."
+END
+
+#endif    // Neutral (Default) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Unknown language: 0x2F, 0x1 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_MKI)
+#ifdef _WIN32
+LANGUAGE 0x2F, 0x1
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CENTRALA_DIALOG DIALOGEX 0, 0, 268, 146
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Централа Сервер.."
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "&Порт:",IDC_STATIC,22,9,20,8
+    COMBOBOX        IDC_COMMPORT,46,7,67,52,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_MSCOMM,"{648A5600-2C6E-101B-82B6-000000000014}",
+                    WS_TABSTOP,7,7,25,23
+    PUSHBUTTON      "&Старт",IDC_START,150,7,50,14
+    PUSHBUTTON      "С&топ",IDC_STOP,206,7,50,14,WS_DISABLED
+    RTEXT           "Број на примени карактери: 0",IDC_COUNT,139,130,121,10,
+                    SS_SUNKEN
+    CONTROL         "List1",IDC_LIST,"SysListView32",WS_BORDER | WS_TABSTOP,
+                    7,27,254,100
+END
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Информации за Централа"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Централа верзија 1.0 од\nБарбуловски Борис",IDC_STATIC,
+                    40,10,120,16,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002",IDC_STATIC,40,36,119,8
+    DEFPUSHBUTTON   "&Затвори",IDOK,178,7,50,14,WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_CENTRALA_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 261
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 139
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_CENTRALA_DIALOG DLGINIT
+BEGIN
+    IDC_COMMPORT, 0x403, 7, 0
+0x6f43, 0x6d6d, 0x3120, "\000" 
+    IDC_COMMPORT, 0x403, 7, 0
+0x6f43, 0x6d6d, 0x3220, "\000" 
+    IDC_COMMPORT, 0x403, 7, 0
+0x6f43, 0x6d6d, 0x3320, "\000" 
+    IDC_COMMPORT, 0x403, 7, 0
+0x6f43, 0x6d6d, 0x3420, "\000" 
+    IDC_MSCOMM, 0x376, 102, 0
+0x0013, 0x0000, 0x0043, 0x006f, 0x0070, 0x0079, 0x0072, 0x0069, 0x0067, 
+0x0068, 0x0074, 0x0020, 0x0028, 0x0063, 0x0029, 0x0020, 0x0031, 0x0039, 
+0x0039, 0x0034, 0x0020, 0x4321, 0x1234, 0x0008, 0x0000, 0x03ed, 0x0000, 
+0x03ed, 0x0000, 0x5601, 0x648a, 0x0000, 0x0006, 0x0000, 0x0001, 0x0400, 
+0x0000, 0x0200, 0x0001, 0x2580, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 
+0x0002, 0x0000, 0x003f, 0x0000, 0x0005, 0x0000, 
+    0
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e3"
+        BEGIN
+            VALUE "Comments", "Програма изработена за Табак Осигурување\0"
+            VALUE "CompanyName", "BokiCSoft - Борис Барбуловски\0"
+            VALUE "FileDescription", "CentralaServer Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "Centrala\0"
+            VALUE "LegalCopyright", "Copyright (C) 2003\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Centrala.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Centrala Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1251
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_POPUP_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "POPUP"
+    BEGIN
+        MENUITEM "&Прикажи го програмот",       ID_POPUP_SHOWPROGRAM
+        MENUITEM "&Информации",                 ID_POPUP_INFO
+        MENUITEM SEPARATOR
+        MENUITEM "&Излез",                      ID_POPUP_EXIT
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Centrala.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&Инфо за Централа..."
+    IDS_VREME               "Време"
+    IDS_LOKAL               "Локал"
+    IDS_TELEFONSKI_BROJ     "Тел. број"
+    IDS_IMPULSI             "Импулси"
+    IDS_SEKUNDI             "Секунди"
+    IDS_OCEKUVANO           "Очекувано %u, примено %u. Во лог датотека: %s"
+    IDS_BROJ_PRIMENI_KARAKTERI "Број на примени карактери: %u"
+    IDS_GRESKA_PRI_DAO      "Грешка при инициализација на DAO системот за бази на податоци,\nве молам проверете дали DAO 3.6 е инсталиран."
+    IDS_GRESKA_PRI_CENTRALA_MDB 
+                            "Грешка при инициализација на Centrala.mdb,\nве молам проверете дали датотеката 'centrala.mdb' е присутна."
+    IDS_GRESKA_PRI_MSCOMM   "Грешка при креирање на главниот прозор.\nПроверете дали ја имате инсталирато контролата MsComm.OCX."
+END
+
+#endif    // Unknown language: 0x2F, 0x1 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Centrala.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

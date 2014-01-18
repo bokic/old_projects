@@ -1,0 +1,4784 @@
+
+
+
+
+
+                               Table of Contents
+
+I. INTRODUCTION......................................................... 1
+II. GRAPHVISION REFERENCE............................................... 2
+     1. GraphVision unit cross reference................................ 3
+          Xms unit...................................................... 4
+          ExtObj unit................................................... 5
+          LowGraph unit................................................. 6
+          GrDriver unit................................................. 7
+          GFonts unit................................................... 8
+          Images unit................................................... 9
+          EventMan unit................................................ 10
+          Grav unit.................................................... 11
+          Controls unit................................................ 13
+          GrApp unit................................................... 13
+          GraMenu unit................................................. 14
+          GStdDlg unit................................................. 14
+          Geditors unit................................................ 15
+          MsgBox unit.................................................. 15
+     2. Object reference............................................... 16
+          GraphApplication............................................. 16
+          GraphBackground.............................................. 16
+          GraphBitmapButton............................................ 17
+          GraphButton.................................................. 19
+          GraphCheckBoxes.............................................. 19
+          GraphCluster................................................. 20
+          GraphDeskTop................................................. 23
+          GraphDialog.................................................. 23
+          GraphGrayGroup............................................... 24
+          GraphGroup................................................... 24
+          GraphHistoryViewer........................................... 25
+          GraphHistoryWindow........................................... 25
+          GraphHistory................................................. 26
+          GraphInputLine............................................... 26
+          GraphLabel................................................... 27
+          GraphListBox................................................. 27
+          GraphListViewer.............................................. 28
+          GraphParamText............................................... 29
+          GraphProgram................................................. 29
+          GraphRadioButtons............................................ 30
+          GraphStaticBitmap............................................ 31
+          GraphTextButton.............................................. 32
+          GraphTwoStateButton.......................................... 33
+          GraphScrollBar............................................... 35
+          GraphScroller................................................ 35
+          GraphStaticText.............................................. 36
+          GraphView.................................................... 37
+          GraphWindow.................................................. 42
+          T8x8BiosFont................................................. 44
+          TBGIFont..................................................... 45
+          TBiosFont.................................................... 46
+          TBmpFilter................................................... 48
+          TByteFlow.................................................... 49
+          TDefaultBGIFont.............................................. 50
+
+
+
+
+
+
+          TextListBox.................................................. 50
+          TFilter...................................................... 51
+          TFixedFont................................................... 52
+          TFont........................................................ 53
+          TImage....................................................... 55
+          TMouseCursor................................................. 56
+          TRasterFont.................................................. 57
+          TSharedResourceCollection.................................... 59
+          TSharedResource.............................................. 59
+          TXmsStream................................................... 60
+     3. Global reference............................................... 62
+          BiosFontParams............................................... 62
+          BitPerPlane.................................................. 62
+          bsXXXXXXX.................................................... 62
+          BytesPerLine................................................. 62
+          CanFillBackground............................................ 63
+          ConvertPixRow................................................ 63
+          CstrToStr.................................................... 63
+          CurrentFont.................................................. 63
+          CursorAreaSize............................................... 63
+          DoneFonts.................................................... 64
+          DoneVideo.................................................... 64
+          DrawChar..................................................... 64
+          DrawImage.................................................... 64
+          DrawMouseShape............................................... 64
+          DriverMode................................................... 65
+          DriverType................................................... 65
+          EmulateMouseCursor........................................... 66
+          ExtractImage................................................. 66
+          FalseMode.................................................... 66
+          FillBackGround............................................... 67
+          Fonts........................................................ 67
+          GetNearestColor.............................................. 67
+          Hot.......................................................... 68
+          InitEvents................................................... 68
+          InitFonts.................................................... 68
+          InitVideo.................................................... 68
+          LockMouseCursor.............................................. 69
+          MinWinSize................................................... 69
+          MouseInRect.................................................. 69
+          MouseOwner................................................... 69
+          MouseShape................................................... 70
+          MoveBlock.................................................... 70
+          MovePixels................................................... 70
+          ofXXXXXX..................................................... 70
+          OutText...................................................... 71
+          OutTextXY.................................................... 71
+          Planes....................................................... 71
+          RegisterProc................................................. 72
+          ScreenHeight................................................. 72
+          ScreenWidth.................................................. 72
+          SelectFont................................................... 72
+          SetExclusiveArea............................................. 73
+
+
+
+
+
+
+          SetMouseCursor............................................... 73
+          SetTextStyle................................................. 73
+          SetupMethods16............................................... 73
+          SetupMethods256.............................................. 73
+          SetWriteMode................................................. 74
+          StdResource.................................................. 74
+          StdSharedResource............................................ 74
+          SwitchBank................................................... 74
+          SystemFont................................................... 74
+          TextHeight................................................... 74
+          TextWidth.................................................... 75
+          TPaletteType................................................. 75
+          Vesa16Modes.................................................. 75
+          Vesa256Modes................................................. 76
+          VesaDriverNames.............................................. 76
+          wfXXXXXX..................................................... 76
+          Xms_Addr..................................................... 77
+          Xms_FreeMem.................................................. 77
+          Xms_GetMem................................................... 77
+          Xms_Init..................................................... 77
+          Xms_Initialized.............................................. 77
+          Xms_MaxAvail................................................. 78
+          Xms_MemAvail................................................. 78
+          Xms_MoveMem.................................................. 78
+          Xms_ResizeMem................................................ 78
+          Xms_Status................................................... 79
+III. RESOURCES......................................................... 80
+     1. What is in Standard.rsc........................................ 80
+     2. How to load a resource......................................... 81
+     3. How resources are stored....................................... 81
+     4. How to add a new resources..................................... 81
+IV. HINTS AND TIPS..................................................... 83
+     1. Videomode setup................................................ 83
+     2. Linking BGI drivers with GraphVision executables............... 85
+     3. BGI drivers and DPMI........................................... 85
+     4. Mouse cursor under VESA modes.................................. 86
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                       1
+
+
+
+               I N T R O D U C T I O N                                      I
+-----------------------------------------------------------------------------
+
+               GraphVision is a object-oriented library based on the
+               structure of Borland International's Turbo Vision user
+               interface library.  GraphVision uses objects similar to
+               Turbo Vision to enable a programmer to write a program using
+               a Graphical User Interface (GUI).
+
+               To use this package, previous experience with Turbo Vision is
+               highly recommended.  This document will provide information
+               regarding the differences between GraphVision and Turbo Vision
+               and how to use GraphVision specific objects.  Anyone
+               interested in learning Turbo Vision should read Borland's
+               "Turbo Vision Guide."  You need Turbo Vision to use
+               GraphVision.
+
+
+
+
+                                       2
+
+
+
+               G R A P H V I S I O N    R E F E R E N C E                  II
+-----------------------------------------------------------------------------
+
+               This part contains three parts:
+
+               Chapter 1, "Structure of GraphVision package", briefly
+               describes the various units that make up GraphVision.
+               It includes lists of all GraphVision specific types,constants,
+               variables, procedures and functions declared in each unit.
+
+               Chapter 2, "Objects reference", is an alphabetical lookup
+               chapter for all the GraphVision standard object types,
+               including their fields and methods.
+
+               Chapter 3, "Global reference", is an alphabetical lookup
+               chapter for all the Graphvision specific global variables,
+               constatnts, procedures and functions.
+
+
+
+                                       3
+
+
+               GraphVision unit cross  reference                           1
+----------------------------------------------------------------------------
+
+
+               The following units make up GraphVision:
+
+               ---------------------------------------------------------
+                  Unit             Contents
+               ---------------------------------------------------------
+                  Controls         Tools and controls for use in dialog boxes.
+                                   Similar to TV Dialogs unit
+                  ExtObj           Some additional useful basic objects for
+                                   GraphVision
+                  EventMan         Mouse support, keyboard handler etc.
+                                   Similar to TV Drivers unit
+                  GrDriver         Some additional high-level graphics
+                                   procedures
+                  GFonts           Set of objects and procedures, intended to
+                                   support standard BGI fonts, as well as
+                                   raster fonts for graphic adapters
+                  Grav             Base objects to create GUI in your
+                                   applications: views,windows, scrollbars etc.
+                                   Similar to TV Views unit
+                  GraMenu          Objects for adding menus and status bars to
+                                   GraphVision application. Similar to
+                                   TV Menus unit.
+                  GrApp            Objects for applications building.
+                                   Similar to TV  App unit
+                  GEditors         Set of objects realising text editors.
+                                   Similar to TV Editors unit
+                  GStdDlg          Set of objects for work with files and
+                                   directories.Similar to TV StdDlg unit.
+                  Images           Objects for presenting images
+                  LowGraph         Some additional low lewel graphics
+                                   routines
+                  MsgBox           Message dialog
+                  Xms              Procedures and functions for XMS support
+               ----------------------------------------------------------
+
+
+
+                                       4
+
+
+Xms unit
+=============================================================================
+               The Xms unit contains procedures and functions allow to
+               use extended memory into applications.
+               -------------------------------------------------------------
+   Constants   Name             Value         Meaning
+               -------------------------------------------------------------
+               Xms_BlockSize    1024          Minimal XMS memory block size
+               -------------------------------------------------------------
+
+               -------------------------------------------------------------
+   Variables   Name             Type           Initial   Meaning
+                                                value
+               -------------------------------------------------------------
+               Xms_Initialized  boolean         false    Sets to true if Xms
+                                                         is available
+               Xms_Addr         pointer                  XMS dispatcher entry
+                                                         point address
+               Xms_Status       byte                     Status of last XMS
+                                                         memory operation
+               -------------------------------------------------------------
+
+  Procedures   -------------------------------------------------------------
+  and          Procedures                Operations
+  functions    -------------------------------------------------------------
+               Xms_FreeMem              Frees previously allocated extended
+                                        memory block
+               Xms_MoveMem              Transmits data to/from extended memory
+               Xms_ResizeMem            Resizes the specified extended memory
+                                        block
+               =============================================================
+               Function                  Operations
+               -------------------------------------------------------------
+               Xms_Init                 Checks if XMS manager is present
+               Xms_MemAvali             Returns the amount of all free
+                                        extended memory
+               Xms_MaxAvail             Returns size of the largest available
+                                        extended memory block
+               Xms_GetMem               Allocates an extended memory block
+                                        of specified size
+               -------------------------------------------------------------
+
+
+
+                                       5
+
+
+ExtObj unit
+=============================================================================
+
+               The ExtObj unit contains the additional basic objects
+               used by GraphVision
+
+        Types  -------------------------------------------------------------
+                 Type                    Use
+               -------------------------------------------------------------
+               TByteFlow                 Used to store any kind of data as
+                                         a stream of bytes
+               TMouseCursor              Changeable mouse cursor support
+               TSharedResourceCollection Used internally into TSharedResource
+               TSharedResource           Shared resources manager
+               TXmsStream                Streams into extended memory
+               -------------------------------------------------------------
+
+               -------------------------------------------------------------
+    Variables  Name               Type         Initial   Meaning
+                                                value
+               -------------------------------------------------------------
+               StdResource       PResourceFile   nil     Points to standard
+                                                         resources file
+               StdSharedResource PSharedResource nil     Poionts to shared
+                                                         resources manager
+               --------------------------------------------------------------
+
+
+
+                                       6
+
+
+LowGraph unit
+============================================================================
+
+               The LowGraph unit contains some additional low-lewel graphics
+               routines used by GraphVision. These routines work directly
+               with videomemory and video hardware registers.
+
+
+        Types  -------------------------------------------------------------
+               Type                   Use
+               -------------------------------------------------------------
+               TPaletteType           Palette type
+               -------------------------------------------------------------
+
+               -------------------------------------------------------------
+    Variables  Name                Type     Initial   Meaning
+                                             value
+               -------------------------------------------------------------
+               Mode                byte       0       Current drawing mode
+               SwitchBank          boolean    false   Current videomode
+                                                      requires memory bank
+                                                      switching
+               EmulateMouseCursor  boolean    false   Enables/disables mouse
+                                                      cursor emulation
+               ScreenWidth         integer            Screen width in pixels
+               ScreenHeight        integer            Screen height in pixels
+               Planes              integer            Number of bit planes
+                                                      for current videomode
+               BitPerPlane         integer            Number of bits, used for
+                                                      storage of each pixel in
+                                                      each bitplane
+               BytesPerLine        integer            Length of one scan-line
+                                                      in one byt blane
+               FalseMode           byte               Used internally by
+                                                      Eventman during mouse
+                                                      initialization
+               CursorAreaSize      word               Memory size required to
+                                                      store screen area covered
+                                                      by mouse cursor
+               --------------------------------------------------------------
+
+
+                                       7
+
+
+    Procedures  -------------------------------------------------------------
+         and   Procedure                 Operation
+   functions   -------------------------------------------------------------
+               ConvertPixRow            Translates color indexes of pixel's row
+                                        from one palette to another
+               DrawChar                 Draws a character on the screen
+               ExtractImage             Extracts a part of image stored in
+                                        buffer and copies it into another
+                                        buffer
+               MovePixels               Moves block of pixels to new location
+                                        on the screen
+               DrawMouseShape           Draws a mouse cursor when mouse
+                                        cursor emulation is on
+               SetupMethods16           Setup procedure for 16 color modes
+               SetupMethods256          Setup procedure for 256 color modes
+               =============================================================
+               Function                 Operation
+               -------------------------------------------------------------
+               GetNearestColor          Using RGB color value searches and
+                                        returns an index of appropriate color
+                                        from BIOS palette
+
+
+
+GrDriver unit
+============================================================================
+
+               The GrDriver module contains the definitions of constatnts,
+               variables, procedures an functions which allow a programmer
+               to use an additional drawing operations, not implemented
+               into standard Turbo Pascal graphic library. It contains also
+               a videomode initialization routine.
+
+               -------------------------------------------------------------
+    Constants  Name              Value         Meaning
+               -------------------------------------------------------------
+               StandardVGA         0           Driver for standard VGA
+               Vesa16              1           VESA 16 colors driver
+               Vesa256             2           VESA 256 colors driver
+               -------------------------------------------------------------
+               VGA640x480          VGAHI       Mode for VGA driver
+               VESA16_800x600      0
+               VESA16_1024x768     1           Modes for VESA 16 colors driver
+               VESA16_1240x1024    2
+
+               VESA256_640x400     0
+               VESA256_640x480     1           Modes for VESA 256 colors driver
+               VESA256_800x600     2
+               VESA256_1024x768    3
+               VESA256_1280x1024   4
+               -------------------------------------------------------------
+
+
+                                       8
+
+
+               -------------------------------------------------------------
+    Variables  Name             Type       Initial      Meaning
+                                            value
+               -------------------------------------------------------------
+               DriverType       integer   StandardVGA   Current driver
+               DriverMode       integer   VGA640x480    Current mode
+               VesaDriverNames  array                   Names of used BGI
+                                                        drivers for VESA modes
+               DriverPaths      array                   BGI drivers' paths
+               VESA16Modes      array                   Maps GraphVision's
+                                                        modes to BGI driver
+                                                        modes for Vesa16
+               VESA256Modes     array                   Maps GraphVision's
+                                                        modes to BGI driver
+                                                        modes for VESA256
+               RegisterProc     procedure nil           BGI drivers
+                                                        registration procedure
+               -------------------------------------------------------------
+
+               -------------------------------------------------------------
+   Procedures  Procedure              Operation
+               -------------------------------------------------------------
+               InitVideo              Initializes the graphics subsystem
+               DoneVideo              Shuts down the graphics subsystem
+               SetWriteMode           Sets the write mode for drawing operations
+               DrawImage              Draws the image on the screen
+               MoveBlock              Moves the block of pixels to a new
+                                      location on the screen
+               -------------------------------------------------------------
+
+
+
+GFonts unit
+============================================================================
+
+               The GFonts unit contains objects to work with the standard BGI
+               fonts, as well as built-in BIOS fonts.
+
+
+        Types  -------------------------------------------------------------
+               Type                  Use
+               -------------------------------------------------------------
+               BiosFontParams        Information about built-in screen fonts
+               TFont                 Abstract type of font
+               TBGIFont              BGI fonts
+               TDefaultBgiFont       BGI DefaultFont font
+               TRasterFont           Abstract type of raster font
+               TFixedFont            Raster fonts with fixed sizes of character
+                                     images
+               TBiosFont             Built-in BIOS fonts
+               T8x8BiosFont          Built-in BIOS 8x8 font
+               -------------------------------------------------------------
+
+
+                                       9
+
+
+               -------------------------------------------------------------
+    Variables  Name           Type         Initial     Meaning
+                                            value
+               -------------------------------------------------------------
+               Fonts          PCollection   nil        Points to a collection
+                                                       of fonts object
+               SystemFont     integer       0          Number of font used as
+                                                       system font
+               CurrentFont    integer       0          Currently used font
+               FillBackground boolean       true       If true, the text
+                                                       drawing operation will
+                                                       fill the background.
+               -------------------------------------------------------------
+
+   Procedures  -------------------------------------------------------------
+          and  Procedure              Operation
+    functions  -------------------------------------------------------------
+               InitFonts              Initialize a collection of fonts
+               DoneFonts              Destroys a collection of fonts
+               SelectFont             Makes the selected font current
+               CanFillBackground      Returns true, if a current font can
+                                      fill the background pixels
+               OutText                Draws string starting current position
+               OutTextXY              Draws string starting specified position
+               SetTextStyle           Sets up the text drawing style
+               =============================================================
+               Function               Operation
+               -------------------------------------------------------------
+               TextHeight             Returns height of text in pixels
+               TextWidth              Returns width of text string
+               -------------------------------------------------------------
+
+
+
+
+Images unit
+============================================================================
+
+               The Images unit contains objects to work with images and
+               for graphics data import.
+
+
+        Types  -------------------------------------------------------------
+               Type                  Use
+               -------------------------------------------------------------
+               TImage                Object to work with images
+               TFilter               Base object to create graphics data
+                                     filters
+               TBmpFilter            Windows BMP format filter
+               TBGIFilter            PutImage format filter
+               -------------------------------------------------------------
+
+
+                                       10
+
+
+               -------------------------------------------------------------
+    Constants  Name                  Value      Meaning
+               -------------------------------------------------------------
+               giError                -1        Generic graphics data import
+                                                error
+               giIOError              -2        IO error
+               giInvalidFormat        -3        Unknown graphics data format
+               -------------------------------------------------------------
+
+
+
+EventMan unit
+============================================================================
+
+               The Eventman unit contains mouse and keyboards drivers and
+               monitor of events. This unit is similar to TV Drivers unit.
+               For a complete description of used types, constant, variables
+               and procedures , see "Turbo Vision Guides" section
+               "Drivers unit"
+               For different reasons, the following variables are excluded
+               from the Eventman unit:
+                     StartupMode,
+                     ScreenMode,
+                     CheckSnow,
+                     HiResScreen,
+                     ScreenBuffer,
+                     CursorLines
+
+               as well as procedures:
+                     SetVideoMode
+                     ClearScreen,
+                     MoveBuf,
+                     MoveChar,
+                     MoveCStr,
+                     MoveStr
+
+               The InitVideo and DoneVideo procedures are moved to GrDriver
+               unit.
+
+               -------------------------------------------------------------
+    Variables  Name             Type      Initial      Meaning
+                                           value
+               -------------------------------------------------------------
+               Hot              TPoint     (0,0)       Mouse cursor's hot spot
+                                                       coordinates
+               ShapeSize        TPoint     (16,16)     Mouse cursor sizes
+               MouseShape       pointer    nil         Pointer to mouse cursor
+                                                       shape
+               -------------------------------------------------------------
+
+
+                                       11
+
+
+   Procedures  -------------------------------------------------------------
+          and  Procedure                Operation
+    functions  -------------------------------------------------------------
+               SetExclusiveArea         Sets exclude area for mouse cursor
+               SetMouseCursor           Changes the mouse cursor shape
+               =============================================================
+               Function                 Operation
+               -------------------------------------------------------------
+               MouseInRect              Returns true if a mouse cursor is
+                                        within given rectangle
+               -------------------------------------------------------------
+
+
+Grav unit
+============================================================================
+
+               The unit GraV is comparable of the unit Views
+               from Turbo Vision and contains objects for construction of
+               a user graphic interface: visible elements, windows,
+               scroll bars and etc.  In this section the differences
+               of unit Grav from the unit Views are described.
+
+        Types  -------------------------------------------------------------
+               Type                  Use
+               -------------------------------------------------------------
+               GraphView             Abstract object; base of all visible
+                                     elements
+               GraphGroup            Abstract object for complex views
+               GraphBackGround       Colored patterned background
+               GraphScrollBar        Object defined a scroll bar
+               GraphListViewer       Base type for list boxes and such
+               GraphWindow           Base object for resizeable windows
+               GraphScroller         Base object for scrollable views
+               -------------------------------------------------------------
+               Removed:   TDrawBuffer
+                          TVideoBuf
+                          TFrame
+               -------------------------------------------------------------
+
+
+                                       12
+
+
+               -------------------------------------------------------------
+    Constants  Name                  Value      Meaning
+               -------------------------------------------------------------
+               ofNoDrawSelect        $40        Visible element does not
+                                                draws itself when selected
+               ofResizeable          $400       Visible element can change its
+                                                size
+               ofMoveable            $800       Visible element can be moved
+               -------------------------------------------------------------
+               wfThickFrame          $10        Window has a thick frame
+               wfThinFrame           $20        Window has thin frame
+               wfFramed              $30        Window has frame of any kind
+               wfTitle               $40        Window has title
+               -------------------------------------------------------------
+               bsNone                 0         Background draws itself
+                                                without border
+               bsBump                 1         "Bump" background
+               bsDip                  2         "Dip" background
+               -------------------------------------------------------------
+               Excluded:   MaxViewWidth
+                            wnNoNumber
+                            cmSelectWindowNum
+                            ofFramed
+                            ofBuffered
+                            sfShadow
+               -------------------------------------------------------------
+
+
+               -------------------------------------------------------------
+    Variables  Name            Type        Initial      Meaning
+                                            value
+               -------------------------------------------------------------
+               MouseOwner      PGraphView    nil    View which changed
+                                                    a mouse cursor shape
+               StdMouseCursor  PMouseCursor nil     Pointer to standard shape
+                                                    of a mouse cursor (arrow)
+               LockMouseCursor integer      0       Locks state of mouse cursor
+                                                    if greather than 0
+               MinWinSize      TPoint      (124,84) Minimum window size
+               CaptionHeight   integer     14       Height of window title
+               -------------------------------------------------------------
+               Excluded:    SadowAttr
+                            ShadowSize
+               -------------------------------------------------------------
+
+
+                                       13
+
+
+Controls unit
+============================================================================
+
+               The Controls unit is analogue of Dialogs unit from Turbo
+               Vision. It contains realizations of objects for dialogue
+               windows and various control elements. Most of that objects
+               are similar to relative objects from Dialogs unit.
+               For its complete description see "Turbo Vision Guide"
+               section "Dialogs unit".
+
+        Types  -------------------------------------------------------------
+               Type                Use
+               -------------------------------------------------------------
+               GraphDialog         Specialized window for dialog boxes
+               GraphButton         Base object to realize various kinds of
+                                   buttons
+               GraphTextButton     The simple text pushbutton
+               GraphBitmapButton   The button which draws itself using bitmaps
+               GraphGrayGroup      Visually incorporates some views into
+                                   one logical group
+               GraphListBox        Abstract object to realise scrollable lists
+                                   for user choise
+               TextListBox         Scrollable text list
+               GraphStaticText     The plain text
+               GraphParamText      Formatted static text
+               GraphLabel          Smart label for other controls
+               GraphInputLine      Text input editor
+               GraphTwoStateButton Button with two fixable states
+               GraphCluster        Abstract type for check boxes and radio
+                                   buttons
+               GraphRadioButtons   Cluster of buttons, only one of wich may
+                                   be pressed at a time
+               GraphCheckBoxes     Clusters to on/off toggle switch
+               GraphStaticBitmap   Static picture
+               GraphHistoryViewer  History lists viewer
+               GraphHistoryWindow  Window to hold a history list viewer
+               GraphHistory        List of previous entries for an input line
+               -------------------------------------------------------------
+
+
+
+GrApp unit
+============================================================================
+
+               The Grapp unit is similar to TV App unit and provides
+               the elements to build a GraphVision applications.
+               The one exception is that the background object is moved in
+               the Grav unit.
+
+
+                                       14
+
+
+        Types  -------------------------------------------------------------
+               Type                Use
+               -------------------------------------------------------------
+               GraphApplication    the application object
+               GraphDesktop        Group object to hold windows and dialog
+                                   boxes
+               GraphProgram        Abstract application object
+               -------------------------------------------------------------
+
+               -------------------------------------------------------------
+    Variables  Name          Type          Initial    Meaning
+                                            value
+               -------------------------------------------------------------
+               Application PGraphProgram     nil   Pointer to current
+                                                   application
+               DeskTop     PGraphDeskTop     nil   Pointer to current
+                                                   desktop
+               StatusLine  PGraphStatusLine  nil   Pointer to status line
+               MenuBar     PGraphMenuView    nil   Pointer to current menu bar
+               -------------------------------------------------------------
+
+
+GraMenu unit
+============================================================================
+
+              The unit GraMenu is analogue of unit Menus in Turbo Vision.
+              This unit provides use of the pull-down menus and status lines.
+              The interface with all objects of this unit similar to
+              interface of appropriate objects in the unit Menus. See the
+              detailed description in a Turbo Vision manual.
+
+        Types  -------------------------------------------------------------
+               Type                Use
+               -------------------------------------------------------------
+               GraphMenuView       Abstract object type for menu bars and
+                                   menu boxes
+               GraphMenuBar        Horizontal menu header, connected to menus
+               GraphMenuBox        Pull-down or pop-up menu box
+               GraphStatusLine     Message line for the bottom of the
+                                   application screen
+               -------------------------------------------------------------
+
+
+
+GStdDlg unit
+============================================================================
+
+               The unit GstdDlg corresponds to the unit StdDlg in Turbo
+               Vision. But TChDirDialog is excluded, and its functions are
+               added to an object TFileDialog.
+
+
+                                       15
+
+
+Geditors unit
+============================================================================
+
+               The unit GEditors on functions similar to the unit Editors
+               in Turbo Vision. In it are realized objects intended for
+               editing of texts.
+
+MsgBox unit
+============================================================================
+
+               In this unit the function MessgeBox is realized, on functions
+               completely similar to appropriate function from the Turbo Vision
+               unit MsgBox. It creates and draws on the screen a dialog box,
+               on appearance similar with the dialog boxes, realized in
+               products of Borland Int. for Microsoft Windows.
+               The InputBox function is declared but does nothing.
+               It was made for compatibility with MsgBox unit from Turbo
+               Vision, so it gives possibility to use the Validate unit
+               within the GraphVision.
+
+
+
+
+                                       16
+
+
+               Object  reference                                           2
+----------------------------------------------------------------------------
+
+               This chapter contains an alphabetical listing of all the
+               standard GraphVision objects, with description of their
+               fields and methods and explanation of their general purposes
+
+
+
+GraphApplication                                                       GrApp
+============================================================================
+
+                 ----------------
+                 | GraphProgram |
+                 ----------------
+                        |
+                        |
+               --------------------
+               | GraphApplication |
+               --------------------
+
+               The object GraphApplication functionally similar to the object
+               TApplication in Turbo Vision. GraphApplication.Init
+               initializes all subsystems, used by GraphVision (events
+               management, video, memory, fonts, history lists) and
+               calls GraphProgram.Init.
+               GraphApplication.Done at first calls GraphProgram.Done,
+               then closes all GraphVision subsystems.
+
+
+GraphBackground                                                         Grav
+============================================================================
+
+                  -------------
+                  | GraphView |
+                  -------------
+                        |
+                        |
+               -------------------
+               | GraphBackground |
+               -------------------
+
+               The object of type GraphBackground is analogue of object
+               TBackground in Turbo Vision ( unit Apps ) - the simple view
+               consisting an uniformly patterned rectangle.
+
+       Fields  --------------------------------------------------------------
+
+  BorderStyle  BorderStyle : integer;
+
+               Defines drawing style for border of object GraphBackground.
+               The value of this field is established at initialization of
+               object.
+               Specially for this purpose definitions of three constants are
+
+
+                                       17
+
+
+               added to the Grav unit - see bsXXXXXX constants description
+               into "Global Reference" chapter.
+
+      Pattern  Pattern:  word;
+
+               Defines a fill pattern. Only standard fill patterns,
+               predefined in the unit Graph can be used.
+
+      Methods  -------------------------------------------------------------
+
+       Init    constructor Init(var Bounds: TRect; APattern: word;
+                                ABorderStyle : integer);
+
+               Calls GraphView.Init, then assigns to the field Pattern
+               value of parameter APattern, and field BorderStyle -
+               value of parameter ABorderStyle.
+
+
+     Palette  ------------------------------------------------------------
+
+                     CBackground = #01#02#03;
+                                     |  |  |
+               background------------Ù  |  |
+               light--------------------Ù  |
+               dark------------------------Ù
+
+
+
+GraphBitmapButton                                                  Controls
+===========================================================================
+
+                  ---------------
+                  | GraphButton |
+                  ---------------
+                         |
+                         |
+               ---------------------
+               | GraphBitmapButton |
+               ---------------------
+
+               This terminal object, realizing buttons drawed with the help
+               of the bitmap images and on appearance similar to
+               bitmap-buttons from Borland Int. in products for
+               Microsoft Windows.
+
+       Fields  ------------------------------------------------------------
+
+      Images   Images : PCollection;
+
+               Stores the pointer to a collection of images ( objects of type
+               TImage ), which are used at the drawing of various states of
+               a button.
+
+
+                                       18
+
+
+      Methods  ------------------------------------------------------------
+
+       Init    constructor Init(var Bounds : TRect; ATitle : TTitleStr;
+                                ACommand : word; AFlags : word);
+
+               Calls GraphButton.Init; then from a file of standard resources,
+               automatically opened during application initialization,
+               loads a collection of images with the name ATitle, and assigns
+               the pointer to it to field Images:
+
+       Load    constructor Load(var S : TStream);
+
+               Calls GraphButton.Load, which loads the fields Title, Command,
+               Flags and AmDefault, then from a file of standard resources
+               loads a collection of images with the name Title^ and saves
+               the pointer to it in the field Images.
+
+       Done    destructor Done; virtual;
+
+               Unloads a collection of images from memory and calls
+               GraphButton.Done.
+
+  DrawState    procedure DrawState(Pushed : boolean); virtual;
+
+               Draws a button on a screen depending on its state.
+               The collections of images for standard buttons, stored in a
+               file of standard resources, contain three images:
+
+               Index       Purpose
+               ------      ----------
+                 0         Inactive button ( State and sfFocused = 0)
+                           ( For enabled and disabled buttons )
+                 1         Pressed active button
+                 2         Normal active button ( State and sfFocused < > 0)
+
+               For example, sequence:
+
+                  GetExtent (R);
+                  P: = Images^.At (1);
+                  DrawImg(R.A,PImage(P),NormalPut);
+
+               draws on a screen an active button in a pressed state.
+               This method can be overrided.
+
+
+
+                                       19
+
+
+GraphButton                                                        Controls
+===========================================================================
+
+                -------------
+                | GraphView |
+                -------------
+                      |
+                      |
+               ---------------
+               | GraphButton |
+               ---------------
+
+               In difference from the object TButton, the object GhaphButton
+               is abstract object, on the basis of which various kinds of
+               buttons are created.
+               The object GraphButton contains the same fields, as TButton.
+               Their description see in " Turbo Vision Guide ".
+
+      Methods  ------------------------------------------------------------
+
+   DrawState   procedure DrawState(Pushed : boolean); virtual;
+
+               Abstract method, drawing of a button depending on its
+               current state. Should be overrides for descendants of the
+               object GraphButton.
+
+
+GraphCheckBoxes                                                     Controls
+============================================================================
+
+                ----------------
+                | GraphCluster |
+                ----------------
+                       |
+                       |
+               -------------------
+               | GraphCheckBoxes |
+               -------------------
+
+               The object Graph‘heckboxes executes the same functions,
+               as TCheckBoxes in Turbo Vision. This set of buttons with
+               independent fixing, i.e. in any moment of a time some buttons
+               can be chosen. The field Value is interpeted as a
+               16 bit set ( from 1 up to 16), where 1 in bit of a position
+               means that the element is labelled.
+
+      Methods  -------------------------------------------------------------
+
+       Init    constructor Init(var Bounds : TRect; AStrings : PSItem);
+
+               Creates a set of checkboxes
+
+
+                                       20
+
+
+       Load    constructor Load(var S : TStream);
+
+               Loads from the stream S a set of checkboxes.
+
+       Done    destructor Done; virtual;
+
+               Destroys a set of checkboxes.
+
+GetItemSize    procedure GetItemSize(var ItemSize : TPoint); virtual;
+
+               Returns in variable ItemSize the size of area, occupied
+               by one item.
+
+HandleEvent    procedure HandleEvent(var Event : TEvent); virtual;
+
+               Processes events from a mouse and keyboard for
+               determination and change of a condition of a current button.
+
+ NewControl    function NewControl(Bounds : TRect;
+                                   AId : integer): PGraphView; virtual;
+
+               Adds a new checkbox in group of checkboxes.
+               Is never called directly.
+
+       Mark    function Mark(Item : Integer): boolean; virtual;
+
+               Returns true, if appropriate bit for item in Value is
+               set in 1, i.e. the given checkbox is marked.
+
+      Press    procedure Press(Control : PGraphView); virtual;
+
+               Called from HandleEvent, when a checkbox is pressed.
+               Changes value of field Value. Is never called directly.
+
+
+GraphCluster                                                        Controls
+============================================================================
+
+                --------------
+                | GraphGroup |
+                --------------
+                       |
+                       |
+               ----------------
+               | GraphCluster |
+               ----------------
+
+               The object GraphCluster represents functional analogue of
+               object TCluster, but, in difference from it, is descendant of
+               group. GraphCluster - abstract object, on the basis of which
+               objects for checboxes and radio buttons are realized.
+
+
+                                       21
+
+
+       Fields  -------------------------------------------------------------
+
+       Value   Value: Word;
+
+               Current value of associated buttons. The particular
+               sense of this fields is determined by a type of object,
+               induced from GraphCluster.
+
+         Sel   Sel: Integer;
+
+               Current chosen element of cluster.
+
+     Methods   -------------------------------------------------------------
+
+       Init    constructor Init(var Bounds: TRect; AStrings: PSItem);
+
+               Calls GraphGroup.Init, adds in it two-state buttons,
+               calling the method InsertItem for each element of list AStrings.
+
+       Load    constructor Load(var S: TStream);
+
+               Calls GraphGroup.Load, then reads Value and Sel fields from
+               the stream S.
+
+   DataSize    function DataSize: Word; virtual;
+
+               Returns the size of field Val. Should be overrided in
+               descendants, which add other fields of data.
+
+    GetData    procedure GetData(var Rec); virtual;
+
+               Copies value of field Value in the record Rec. Should be
+               overrided in derivated types, which add other fields of data.
+
+GetItemSize    procedure GetItemSize(var ItemSize : TPoint); virtual;
+
+               Returns in variable ItemSize the size of area, occupied
+               by one item. This abstract method, which should
+               be redefined for descendants of the object GraphCluster.
+
+ GetHelpCtx    function GetHelpCtx: Word; virtual;
+
+               Returns the value HelpCtx + Sel, that permits to set the
+               contex help for each cluster item.
+
+ GetPalette    function GetPalette : PPalette; virtual;
+
+               Returns the pointer to default palette.
+
+
+                                       22
+
+
+  NewControl   function NewControl(Bounds : TRect;
+                                   AId : integer): PGraphView; virtual;
+
+               Abstract method, performing new item insertion in a cluster.
+               AID - identifier of a item in cluster.
+               Should be overrided for descendants of the object GraphCluster.
+               Is never called directly.
+
+       Mark    function Mark(Item: Integer): Boolean; virtual;
+
+               Used for definition, which cluster items are marked. By
+               default always returns false, i.e. this method should
+               be overrided for descendants of the object GraphCluster.
+
+      Press    procedure Press(Control : PGraphView); virtual;
+
+               Called from HandleEvent, when the cluster item is
+               marked with mouse clic or event from a keyboard. This abstract
+               method should be overrided.
+
+    SetData    procedure SetData(var Rec); virtual;
+
+               Reads the field Value from the record Rec and gives a command
+               to cluster items to redraw themself pursuant to that field
+               value. Should be overrided, if the descendant types use
+               additional fields of data.
+
+               For example:
+
+               Procedure NewType.SetData(var Rec);
+               begin
+                  GraphCluster.SetData(Rec);
+                  ....
+                  { Other actions }
+                  ....
+               End;
+
+     Store    procedure Store(var S: TStream);
+
+              Saves the object GraphCluster in a stream calling
+              GraphView.Store, writes Valuse and Sel in the stream S.
+
+    Palette   --------------------------------------------------------------
+
+                       CCluster = #47#48#49#50#51#52#53;
+                                   |  |  |  |  |  |  |
+              Background ----------Ù  |  |  |  |  |  |
+              disabled text ----------Ù  |  |  |  |  |
+              normal text ---------------Ù  |  |  |  |
+              selected text ----------------Ù  |  |  |
+              shortcut ------------------------Ù  |  |
+              normal button ----------------------Ù  |
+              disabled button -----------------------Ù
+
+
+                                       23
+
+
+GraphDeskTop                                                           GrApp
+============================================================================
+
+                --------------
+                | GraphGroup |
+                --------------
+                      |
+                      |
+               ----------------
+               | GraphDesktop |
+               ----------------
+
+               The object GraphDesktop similar to the object TDeskTop,
+               except that method InitBackground is used instead of the
+               method NewBackground.
+
+     Methjods  -------------------------------------------------------------
+
+InitBackground   procedure InitBackground; virtual;
+
+               Creates object of a screen background.
+               Called in the method GraphDesktop.Init. Can be overrided.
+
+
+GraphDialog                                                        Controls
+===========================================================================
+
+               -----------------
+               |  GraphWindow  |
+               -----------------
+                       |
+                       |
+                ---------------
+                | GraphDialog |
+                ---------------
+
+               This object similar to the object TDialog.
+               Their description see in "Turbo Vision Guide"
+
+     Palette   -----------------------------------------------------------
+
+               CDialog = #94#95#96#97#98#99#100#101#102#103#104#105#106+
+                         #107#108#109#110#111#112#113#114#115#116#117+
+                         #118#119#120#121#122#123#124#125#126#127#128+
+                         #129#130#131#132#133#134#135#136#137#138#139+
+                         #140#141#142#143#144#145#146#147#148#149#150+
+                         #151#152#153#154#155#156#157#158;
+
+               The entries
+                   with 1 on 23  - coincide on purpose with appropriate
+                                   entries in a window palette.
+                   with 24 on 25 - color for GraphStaticText
+                   with 26 on 30 - color for GraphLabel
+                   with 31 on 46 - color for text buttons
+
+
+                                       24
+
+
+                   with 47 on 53 - color for cluster
+                   with 54 on 57 - color of a input line
+                   with 58 on 61 - are used by history windows
+                   with 62 on 64 - color for GraphListViewer descendants
+
+
+GraphGrayGroup                                                      Controls
+============================================================================
+
+               -------------------
+               | GraphBackground |
+               -------------------
+                        |
+                        |
+               ------------------
+               | GraphGrayGroup |
+               ------------------
+
+               This simple object is intended for visual association of
+               several control elements in one group.
+               Example of use: the unit Calc in the demonstration program.
+
+     Methods   -------------------------------------------------------------
+
+       Init    constructor Init(var Bounds : TRect);
+
+               Calls GraphBackground.Init and establishs GrowMode = 0;
+
+
+GraphGroup                                                              Grav
+============================================================================
+
+
+                -------------
+                | GraphView |
+                -------------
+                      |
+                      |
+               ----------------
+               |  GraphGroup  |
+               ----------------
+
+               GraphGroup - the analogue of object TGroup in Turbo Vision
+               and grants the same means for management of lists of visible
+               elements.
+
+       Fields  -------------------------------------------------------------
+
+               Is excluded the field Buffer, as all drawing operations work
+               directly with videoRAM.
+
+
+                                       25
+
+
+     Methods   -------------------------------------------------------------
+
+ChangeClipRect  procedure ChangeClipRect; virtual;
+
+               Changes the size of a minimum rectangle, which is required
+               to redraw during the operation Draw. For each visible element,
+               included in group, the method ChangeClipRect is also called;
+               is never overrided and not called directly.
+
+ResetCliprect  procedure ResetClipRect; virtual;
+
+               Restores the size of a minimum rectangle. For each visible
+               element, included in group, the method ResetClipRect is
+               also calledd. Is never overrided and called directly.
+
+
+GraphHistoryViewer                                                  Controls
+============================================================================
+
+                 -------------------
+                 | GraphListViewer |
+                 -------------------
+                         |
+                         |
+               ----------------------
+               | GraphHistoryViewer |
+               ----------------------
+
+               The object GraphHistoryViewer executes the same functions,
+               as THistoryViewer.
+               Detailed description see in a manual on Turbo Vision.
+
+      Palette  -------------------------------------------------------------
+
+               CHistoryViewer = #28#29#30#31;
+                                 |  |  |  |
+                Backgr normal----Ù  |  |  |
+                text normal --------Ù  |  |
+                backg selected --------Ù  |
+                text selected ------------Ù
+
+
+GraphHistoryWindow                                                  Controls
+============================================================================
+
+                  ---------------
+                  | GraphWindow |
+                  ---------------
+                         |
+                         |
+               ----------------------
+               | GraphHistoryWindow |
+               ----------------------
+
+
+
+                                       26
+
+
+               The object GraphHistoryWindow completely appropriate to the
+               object THistoryWindow in Turbo Vision.
+
+    Palette  -------------------------------------------------------------
+
+               CHistoryWindow = #1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17 +
+                                #18#19#20#21#22#23#24#25#26#27#58#59#60#61
+
+               Entries with 1 on 27 coincide on purpose with
+               appropriate palette entries of a window,
+               Entries with 28 on 31 - color for GraphHistoryViewer.
+
+
+GraphHistory                                                        Controls
+============================================================================
+
+                -------------
+                | GraphView |
+                -------------
+                      |
+                      |
+               ----------------
+               | GraphHistory |
+               ----------------
+
+               The object GraphHistory completely similar to the object
+               THistory. The description of methods and fields see in
+               a manual on Turbo Vision.
+
+      Palette  -------------------------------------------------------------
+
+               CHistory = #04#05#06#07#08;
+                           |  |  |  |  |
+                Main ------Ù  |  |  |  |
+                light --------Ù  |  |  |
+                dark ------------Ù  |  |
+                enabled  ---------- Ù  |
+                disabled ------------- Ù
+
+
+GraphInputLine                                                      Controls
+============================================================================
+
+                 -------------
+                 | GraphView |
+                 -------------
+                       |
+                       |
+               ------------------
+               | GraphInputLine |
+               ------------------
+
+               The object GraphInputLine completely similar to the object
+               TInputLine in Turbo Vision.
+
+
+                                       27
+
+
+     Palette   -------------------------------------------------------------
+
+                      CInputLine = #54#55#56#57;
+                                    |  |  |  |
+                Background normal---Ù  |  |  |
+                text normal -----------Ù  |  |
+                background marked --------Ù  |
+                text marked -----------------Ù
+
+
+GraphLabel                                                          Controls
+============================================================================
+
+               -------------------
+               | GraphStaticText |
+               -------------------
+                        |
+                        |
+                 --------------
+                 | GraphLabel |
+                 --------------
+
+               The object GraphLabel completely similar to the object TLabel
+               in Turbo Vision. For the self-drawing on a screen object
+               GraphLabel uses system font and size ofa symbol equal to 1.
+
+      Palette  -------------------------------------------------------------
+
+                      CLabel = #26#27#28#29#30;
+                                |  |  |  |  |
+                Background -----Ù  |  |  |  |
+                disabled text -----Ù  |  |  |
+                normal text ----------Ù  |  |
+                selected text -----------Ù  |
+                shortcut -------------------Ù
+
+
+GraphListBox                                                        Controls
+============================================================================
+
+               -------------------
+               | GraphListViewer |
+               -------------------
+                        |
+                        |
+                ----------------
+                | GraphListBox |
+                ----------------
+
+               In difference from the object TListBox in Turbo Vision,
+               the object GraphListBox is an abstract objects. It realize
+               methods for work with a attached collection, similar to the
+               to methods TListBox, except for the method GetText.
+               The method GetItem is used instead.
+
+
+                                       28
+
+
+     Methods   -------------------------------------------------------------
+
+    GetItem    function GetItem(Item : integer): pointer; virtual;
+
+               Returns untypized pointer to a Collection element Item.
+               Descendants of the object GraphListBox should
+               define  methods, which interpete returned pointer as
+               the pointer of particular type. For a example see the
+               object TextListBox.
+
+GraphListViewer                                                         Grav
+============================================================================
+
+                  -------------
+                  | GraphView |
+                  -------------
+                        |
+                        |
+               -------------------
+               | GraphListViewer |
+               -------------------
+
+               The object GraphListViewer is analogue of object TListViewer.
+               The method GetText is excluded. Instead of it the method
+               GetItem is used.
+
+      Methods  -------------------------------------------------------------
+
+    DrawItem   procedure DrawItem(Item : integer); virtual;
+
+               Abstract method, intended for drawing on screen of element
+               with number Item. Should be redefined for descendants of
+               the object GraphListViewer.
+
+   DrawItems   procedure DrawItems;
+
+               Draws on a screen displayed elements of the list, calling for
+               each of them a method DrawItem.
+
+     GetItem   function GetItem(Item: Integer): pointer; virtual;
+
+               Abstract method. Returns the pointer to the element Item.
+               Should be overrided for descendants of the object
+               GraphListViewer.
+
+ GetItemRect   procedure GetItemRect(Item : integer; var Bounds : TRect);
+
+               Returns in variable Bounds coordinates of area, occupied
+               by element Item.
+
+ GetItemSize   procedure GetItemSize(var ItemSize : TPoint); virtual;
+
+               Abstract method. Returns in variable ItemSize the sizes of the
+               image of a element of the list. All elements of the list should
+
+
+                                       29
+
+
+               have the image of the identical size.
+               This method should be overrided for descendants of the object
+               GraphListViewer.
+
+     Palette   -------------------------------------------------------------
+
+                           CListViewer =#62#63#64#65;
+                                          |  |  |  |
+               backgr normal -------------Ù  |  |  |
+               text - " -    ----------------Ù  |  |
+               backgr highlighted --------------Ù  |
+               text - " -  ------------------------Ù
+
+
+GraphParamText                                                      Controls
+============================================================================
+
+                -------------------
+                | GraphStatictext |
+                -------------------
+                         |
+                         |
+                ------------------
+                | GraphParamText |
+                ------------------
+
+                The object GraphParamText completely similar to the object
+                TParamText in Turbo Vision. For the self-drawing on a screen,
+                object GraphParamText uses system font and size of a symbol
+                equal to 1.
+
+
+GraphProgram                                                           Grapp
+============================================================================
+
+                 --------------
+                 | GraphGroup |
+                 --------------
+                       |
+                       |
+                ----------------
+                | GraphProgram |
+                ----------------
+
+                The object GraphProgram, similarly TProgram in Turbo Vision,
+                is base for all standard programs in GraphVision. The detailed
+                description of methods see in a manual on Turbo Vision.
+                At initialization the object GraphProgram tries to open
+                a stream, in which standard resources used by various objects
+                GraphVision are stored.
+                Search in a file of the executed program is at first made.
+                If the resources are not found, attempt to open the file
+                Standard.rsc is made, which is delivered together with the
+                package Graph Vision and in which set of standard resources
+
+
+                                       30
+
+
+                ( images of bitmap-buttons and etc. ) is stored. If the file
+                of resources is found, pointer to object of type TResourceFile
+                which manages with a file of resources stores in global
+                variable StdResource.
+                Besides object of type TSharedResource is created.
+
+       Methods  ------------------------------------------------------------
+
+  RefreshRect   procedure RefreshRect(Bounds : TRect); virtual;
+
+                Used for redrawing of the rectangle Bounds,
+                given in local coordinates of GraphProgram object.
+                Is never overridedd and called directly.
+
+
+GraphRadioButtons                                                   Controls
+============================================================================
+
+                   ----------------
+                   | GraphCluster |
+                   ----------------
+                          |
+                          |
+                ---------------------
+                | GraphRadioButtons |
+                ---------------------
+
+                The object GraphRadioButtons executes the same functions,
+                as TRadioButtons in Turbo Vision. This set of buttons with
+                dependent fixing, i.e. in any moment of a time can be chosen
+                only one button. The field Value is interpeted as the
+                number of a chosen button: 0 - there are no chosen buttons,
+                1 - first button is chosen and etc.
+
+       Methods  ------------------------------------------------------------
+
+        Init    constructor Init(var Bounds : TRect; AStrings : PSItem);
+
+                Creates a set of radiobuttons.
+
+        Load    constructor Load(var S : TStream);
+
+                Loads from the stream S a set of radiobuttons.
+
+        Done    destructor Done; virtual;
+
+                Destroys a set of radfiobuttons.
+
+ GetItemSize    procedure GetItemSize(var ItemSize : TPoint); virtual;
+
+                Returns in variable ItemSize the sizes of area, occupied
+                by one item.
+
+
+                                       31
+
+
+ HandleEvent    procedure HandleEvent(var Event : TEvent); virtual;
+
+                Processes events from a mouse and keyboard for definition
+                and change of a current button.
+
+  NewControl    function NewControl(Bounds : TRect;
+                                    AId : integer): PGraphView; virtual;
+
+                Adds a new button in a set of radiobuttons.
+                Is never called directly.
+
+        Mark    function Mark(Item : Integer): boolean; virtual;
+
+                Returns true if Item = Value, i.e. the button with number
+                Item is current.
+
+       Press    procedure Press(Control : PGraphView); virtual;
+
+                Called from HandleEvent, when a radiobutton is pressed.
+                Changes value of field Value and state of radiobuttons,
+                inserted in group. Is never called directly.
+
+
+GraphStaticBitmap                                                   Controls
+============================================================================
+
+                     -------------
+                     | GraphView |
+                     -------------
+                           |
+                           |
+                 ---------------------
+                 | GraphStaticBitmap |
+                 ---------------------
+
+                 It is simple object, intended for drawing on a screen of
+                 the static images. GraphStaticBitmap ignores all events,
+                 transferred to it. Used as passive icon or label.
+
+        Fields   -----------------------------------------------------------
+
+        Image    Image : PImage;
+
+                 The pointer to object of type TImage, in which a bitmap
+                 image is stored .
+
+       Methods   -----------------------------------------------------------
+
+          Init   constructor Init(var Bounds : TRect; AName : String);
+
+                 Calls GraphView.Init, loads image with name AName
+                 from standard resources file, and assigns to the field
+                 Image pointer to loaded image.
+
+
+
+                                       32
+
+
+          Load   constructor Load(var S : TStream);
+
+                 Calls GraphView.Load and loads from the stream S a name of
+                 image, then loads image from file of standard resopurces.
+
+          Done   destructor Done; virtual;
+
+                 Destroys object, storing bitmap image and calls
+                 GraphView.Done.
+
+          Draw   procedure Draw; virtual;
+
+                 Draws the image on the screen, using the method DrawImg:
+
+                 GetExtent(R);
+                 DrawImg(R.A,Image,NormalPut);
+
+         Store   procedure Store(var S : TStream); virtual;
+
+                 Calls GraphView.Store and then saves in the stream S name
+                 of the image.
+
+
+GraphTextButton                                                    Controls
+===========================================================================
+
+                 ---------------
+                 | GraphButton |
+                 ---------------
+                        |
+                        |
+               -------------------
+               | GraphTextButton |
+               -------------------
+
+               GraphTextButton is terminal object, representing volumetric
+               rectangle with text, on appearance similar on standard
+               buttons in Microsoft Windows. Inherits all methods, except
+               mentioned below, from the object GraphButton.
+
+     Methods   ------------------------------------------------------------
+
+   DrawState   procedure DrawState(Pushed : boolean); virtual;
+
+               Executes button drawing on a screen. Called through the
+               method Draw and is never called directly. At desire can be
+               overrided.
+
+  GetPalette   procedure GetPalette : PPalette; virtual;
+
+               Returns the pointer to palette of the text button CButton.
+
+
+                                       33
+
+
+     Palette   ------------------------------------------------------------
+
+
+              CButton = #31#32#33#34#31#32#33#34#35#36#37#38#43#44#45#46;
+ Enabled inactive        |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+     background ---------Ù  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+          light ------------Ù  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+           dark ---------------Ù  |  |  |  |  |  |  |  |  |  |  |  |  |
+           text ------------------Ù  |  |  |  |  |  |  |  |  |  |  |  |
+ Default (amDefault=true)            |  |  |  |  |  |  |  |  |  |  |  |
+     background ---------------------Ù  |  |  |  |  |  |  |  |  |  |  |
+          light-------------------------Ù  |  |  |  |  |  |  |  |  |  |
+           dark ---------------------------Ù  |  |  |  |  |  |  |  |  |
+           text ------------------------------Ù  |  |  |  |  |  |  |  |
+ Current                                         |  |  |  |  |  |  |  |
+     background----------------------------------Ù  |  |  |  |  |  |  |
+          light-------------------------------------Ù  |  |  |  |  |  |
+           dark----------------------------------------Ù  |  |  |  |  |
+           text-------------------------------------------Ù  |  |  |  |
+ Disabled                                                    |  |  |  |
+     background ---------------------------------------------Ù  |  |  |
+          light ------------------------------------------------Ù  |  |
+           dark ---------------------------------------------------Ù  |
+           text ------------------------------------------------------Ù
+
+
+GraphTwoStateButton                                                 Controls
+============================================================================
+
+                    -------------
+                    | GraphView |
+                    -------------
+                          |
+                          |
+               -----------------------
+               | GraphTwoStateButton |
+               -----------------------
+
+               It is abstract object, containing main methods for creation
+               of buttons with two fixed states.
+
+
+      Fields   -------------------------------------------------------------
+
+     Checked   Checked : boolean;
+
+               This field stores a current state of a button ( if false - the
+               button is released).
+
+     Methods   --------------------------------------------------------------
+
+       Load   constructor Load(var S : TStream);
+
+              Calls GraphView.Load and reads from the stream S value
+
+
+                                       34
+
+
+              of fields Checked.
+
+      Check   procedure Check;
+
+              Establishs value of field Checked in true.
+
+    GetData   procedure GetData(var Rec); virtual;
+
+              Returns in variable Rec value of field Checked.
+              Can be overrided for descendants.
+
+   DataSize   function DataSize : word; virtual;
+
+              Returns the size of record for GetData. By default returns
+              SizeOf(Boolean). Can be overrides for descendants.
+
+       Draw   procedure Draw; virtual;
+
+              Draws a button on a screen accordingly to value of
+              field Checked, calling the method DrawState. Should not be
+              override.
+
+  DrawState   procedure DrawState(Pressed: Boolean); virtual;
+
+              Draws a button on a screen accordinghly to value of
+              parameter Pressed. Should be overrided for descendants of the
+              object GraphTwoStateButton.
+
+HandleEvent   procedure HandleEvent(var Event: TEvent); virtual;
+
+              Processes events, which can influence change of a state of a
+              button. The state of a button can be changed, as well as at
+              GraphButton, wit mouse click or pressing of a space key
+              (if State and sfFocused < > 0).
+
+    SetData   procedure SetData(var Rec); virtual;
+
+              By default reads SizeOf(Boolean) bytes from the record Rec.
+              Can be overrided for descendants.
+
+      Press   procedure Press; virtual;
+
+              Called by the procedure HandleEvent when button is pressed.
+              Changes a valuse of Checked field, calling the method Toggle.
+              Can be redefined for descendants.
+
+   SetCheck   procedure SetCheck(CheckState : boolean);
+
+              Sets the field Checked in the state CheckState.
+
+      Store   procedure Store(var S : TStream);
+
+              Calls GraphView.Store and writes Checked field in the stream S.
+
+
+
+                                       35
+
+
+     Toggle   procedure Toggle;
+
+             Changes value of fields Checked on opposite.
+
+    Uncheck   procedure UnCheck;
+
+              Sets value of Checked field in false.
+
+
+
+GraphScrollBar                                                          Grav
+============================================================================
+
+                  --------------
+                  | GraphGroup |
+                  --------------
+                        |
+                        |
+                ------------------
+                | GraphScrollBar |
+                ------------------
+
+
+                Realization of scroll bar object is changed. In difference
+                from the object TScrollBar, which is TView descendant,
+                GraphScrollBar is GraphGroup descendant. The programm
+                interface, however, has not changed. All fields and methods,
+                realized for TScrollBar, are realized and for GraphScrollBar.
+                The detailed description of fields and methods see in
+                "Turbo Vision Guide ".
+
+      Palette   ------------------------------------------------------------
+
+                CScrollBar = #19#20#21#22#23;
+                               |  |  |  |  |
+                Main ----------Ù  |  |  |  |
+                Light-------------Ù  |  |  |
+                dark ----------------Ù  |  |
+                reserved----------------Ù--Ù
+
+
+GraphScroller                                                           Grav
+============================================================================
+
+                  -------------
+                  | GraphView |
+                  -------------
+                        |
+                        |
+                -----------------
+                | GraphScroller |
+                -----------------
+
+                The object GraphScroller is analogue of object TScroller.
+
+
+                                       36
+
+
+                The detailed description of fields and methods see
+                in " Turbo Vision Guide ".
+
+       Fields   -----------------------------------------------------------
+
+         Step   Step : TPoint
+
+                Holds sizes of scroller's logical element
+
+      Methods   -----------------------------------------------------------
+
+     GetDelta   procedure GetDelta(var Delta : TPoint);
+
+                Returns scroller's sizes in logical elements.
+                Called from SetLimit method. The Delta.X and Delta.Y values
+                are used to set a correct parameters for scrollbars,
+                associated with scroller.
+                The Delta value calculates as follows:
+
+                   with Delta do begin
+                      X := Size.X div Step.X;
+                      Y := Size.Y div Step.Y;
+                   end;
+
+      Palette   -----------------------------------------------------------
+
+                   CScroller = #24#25#26#27;
+                                 |  |  |  |
+                Normal backgrd --Ù  |  |  |
+                normal text --------Ù  |  |
+                highlighted backgrd ---Ù  |
+                highlighted text ---------Ù
+
+
+GraphStaticText                                                     Controls
+============================================================================
+
+                   -------------
+                   | GraphView |
+                   -------------
+                         |
+                         |
+                -------------------
+                | GraphStaticText |
+                -------------------
+
+                The object GraphStaticText, similarly to the object
+                TStaticText in Turbo Vision, represents the elementary
+                visible element. It contains the fixed text and ignores
+                any events.
+
+
+
+                                       37
+
+
+        Fields   ------------------------------------------------------------
+
+         Font   Font : word;
+
+                Defines the font used for text drawing on a
+                screen ( see the unit GFonts ).
+
+     CharSize   CharSize : word;
+
+                Defines the size of symbols text drawing on a screen.
+
+      Methods   ------------------------------------------------------------
+
+         Init   constructor Init(var Bounds: TRect; AText: String;
+                                 AFont,ACharSize : word);
+
+                Creates object of type GraphStaticText of the given size,
+                calling GraphView.Init. Saves the string AText and assigns
+                to the fields Font and CharSize the valuse AFont and
+                ACharSize accordingly.
+
+      Palette   ------------------------------------------------------------
+
+                CStaticText =  #24#25;
+                                 |  |
+                 background -----Ù  |
+                 text --------------Ù
+
+
+GraphView                                                               Grav
+============================================================================
+
+                 -----------
+                 | TObject |
+                 -----------
+                      |
+                      |
+               ---------------
+               |  GraphView  |
+               ---------------
+
+               The object of type GraphView is comparable to the object
+               TView in Turbo Vision and is the parent of all visible
+               elements.
+
+      Fields   -------------------------------------------------------------
+
+      Cursor   Cursor : TPoint;
+
+               Coordinates of current pointer in a visible element
+               (analogue of the current pointer CP of unit Graph ).
+               The cursor puts on screen at this position, if the visible
+               element is active ( sfActive ) and the cursor is on
+               (sfCursorVis). The form of the cursor depends on the state of
+
+
+                                       38
+
+
+               the flag sfCursorIns. Some drawing methods, defined for
+               GraphView, use value of field Cursor for calculating the start
+               position of operation (for example WriteText).
+
+     Methods   -------------------------------------------------------------
+
+ChangeClipRect  procedure ChangeClipRect; virtual;
+
+                Changes the size of a minimum rectangle, which is required
+                to redraw during the operation Draw. Is never overrided and
+                called directly.
+
+ChangeMouseCursor  procedure ChangeMouseCursor; virtual;
+
+                Changes the mouse cursor to a new cursor associated
+                with view calling MakeActive method for appropriate
+                TMouseCursor object.
+                GraphView.ChangeMouseCursor always uses TMouseCursor object
+                which global variable StdMouseCursor points to.
+                This method may be owerrided to set link between view and
+                mouse cursor's shape.
+
+
+    DragView    procedure DragView(Event: TEvent; Mode: Byte;
+                                  var Limits: TRect; MinSize, MaxSize: TPoint;
+                                  RealMove : boolean); virtual;
+
+                Executes the same function, as similar method of TView.
+                A difference is that the parameter RealMove is added, which
+                defines, how a visible element will be moved. If
+                RealMove = true, a visible element is moved immediately.
+                Otherwise a thin frame is moved, and the visible element
+                remains on a place, until the mouse button is released, then
+                it is moved to its new place. Significance of parameter
+                RealMove = true more reasonable to use for moving of
+                objects of a small size to avoid screen flicking.
+
+   GetColor     function GetColor(Color: Word): Word;
+
+                Returns the value of the color index by Color in the color
+                palette.  This is different than TView.GetColor in that it
+                does not return two colors in the high and low bytes of the
+                return value.
+
+  RefreshRect   procedure RefreshRect(Bounds : TRect); virtual;
+
+                Used for redrawing of the rectangle Bounds, given by
+                local coordinates of visible element.
+                Can be used to change a visible element, even if it is not
+                active (State and sfFocused = 0).
+                Never override. For an example see the unit Arty.
+
+
+                                       39
+
+
+ResetClipRect   procedure ResetClipRect; virtual;
+
+                Restores the size of a minimum rectangle. Never call directly.
+
+  SetDrawPort   procedure SetDrawPort(Bounds : TRect);
+
+                Changes the size and location of the current output area of
+                the  graphic subsystem. The local coordinates, specified in
+                the  parameter Bounds, will be transformed in global, then
+                procedure SetViewPort of unit Graph is called.
+
+                Is used in the method DrawView:
+                  ....
+                  GetClipRect(Bounds);
+                  SetDrawPort(Bounds);
+                  Draw;
+                  ....
+                It is not desirable to use this in other methods.
+
+          Arc   procedure Arc(Center : TPoint;
+                              StAngle, EndAngle, Radius: Word);
+
+                Draws an arc with radius Radius from StAngle up to EndAngle,
+                using Center as a central point. The value of center is set
+                in local coordinates of visible element.
+
+          Bar   procedure Bar(Bounds : TRect);
+
+                Draws a filled rectangle, using current color and pattern.
+                The bounds of the rectangle are set in local coordinates
+                of a visible element.
+
+BicolorRectangle  procedure BicolorRectangle(Bounds : TRect;
+                                             Light,Dark : word;
+                                             Down : boolean);
+
+                Draws a rectangle with the size, given by Bounds. Two
+                one of the sides are drawn by the color Light, two other -
+                color Dark. Used for creation of 3D effects. For
+                example,
+
+                   BicolorRectangle(R, White, DarkGray, false)
+
+                will be draw the "convex" area, the left-hand and top sides
+                will be white ( highlighted ), and right and bottom will
+                be dark gray.
+
+       Circle   procedure Circle(Center : TPoint; Radius : word);
+
+                Draws a circle with radius R and center Center, using
+                current color.
+
+
+                                       40
+
+
+      DrawImg   procedure DrawImg(Location : TPoint; Image : PImage;
+                                  BitBlt : word);
+
+                Draws an image which Image parameter points to.
+                Location is a coordinates of an upper-left corner of image
+                given in local coordinates of a visible element.
+                BitBlt specifies which binary operator will be used to draw
+                image on the screen.
+
+     DrawPoly   procedure DrawPoly(Number:Word; var PolyArray);
+
+                Draws the outline of polygon using current line style and
+                color. Parameter Number specifies the number of coordinates
+                in PolyArray. A coordinate consists of TPoint object.
+
+  EllipticArc   procedure EllipticArc(Center : TPoint; StAngle,EndAngle,
+                                      XRadius,YRadius : word);
+
+                Draws elliptic arc with radiuses XRadius and YRadius, from
+                the StAngle up to the EndAngle, using Center as a
+                central point and using current color.
+
+      Ellipse   procedure Ellipse(Center : TPoint; XRadius,YRadius : word);
+
+                Draws ellipse with radiuses XRadius and YRadius, using Center
+                as a central point and using current color.
+
+  FillEllipse   procedure FillEllipse(Center : TPoint; XRadius,YRadius : word);
+
+                Draws filled ellipse with radiuses XRadius and YRadius, using
+                Center as a central point and using current color and pattern
+                style.
+
+     FillPoly   procedure FillPoly(Number:Word; var PolyArray);
+
+                Draws the filled poilygon using current color and fill style.
+                Parameter Number specifies the number of coordinates in
+                PolyArray, which consists of TPoint object.
+
+         Line   procedure Line(Bounds : TRect);
+
+                Draws a line from the point Bounds.A to the point Bounds.B,
+                using current color and style of a line.
+
+       LineTo   procedure LineTo(Point : TPoint);
+
+                Draws a line from the current position, determined by value
+                of field Cursor, up to the point Point.
+
+     MoveRect   procedure MoveRect(Bounds : TRect; DeltaX,DeltaY : integer);
+
+                Moves block of pixels given by Bounds parameter to a new
+                location. Parameters DeltaX and DeltaY determine distance
+                and direction of move.
+
+
+                                       41
+
+
+                Makes Clipping on a bounds of visible element.
+
+     PieSlice   procedure PieSlice(Center : TPoint;
+                                   StAngle, EndAngle, Radius: Word);
+
+                Draws filled sector with radius Radius between StAngle and
+                EndAngle, using Center as a central point.
+
+    PutBitmap   procedure PutBitmap(Location : TPoint; var BitMap;
+                                    BitBlt : word);
+
+                Analogue of function PutImage. Draws on a screen a BitMap
+                image. Location is coordinate of a left-hand top corner of a
+                image in local coordinates of visible element. Makes clipping
+                on a bounds of the visible elment.
+
+     PutPixel   procedure PutPixel(Location : TPoint; Color : word);
+
+                Sets pixel given by Location to color Color.
+
+    Rectangle   procedure Rectangle(Bounds : TRect);
+
+                Draws a rectangle with the size given by Bounds. Uses
+                current color and line style.
+
+    WriteText   procedure WriteText(S : String);
+
+                writes a text string, using current font (see GFonts unit),
+                starting at current position in a visible element ( see the
+                field Cursor ).
+
+  WriteTextXY   procedure WriteTextXY(Point : TPoint; S : string);
+
+                writes text string S starting at the position Point, using
+                current font.
+
+ WriteCtextXY   procedure WriteCTextXY(Point : TPoint; S : string;
+                                       TextColor,AccelColor : word);
+
+                Writes the text string S starting at the position Point;
+                the symbols, made in marks "~", are writes by the color
+                AccelColor, the other symbols are writes by the color
+                TextColor.
+
+
+
+                                       42
+
+
+GraphWindow                                                             Grav
+============================================================================
+
+                 --------------
+                 | GraphGroup |
+                 --------------
+                       |
+                       |
+                ---------------
+                | GraphWindow |
+                ---------------
+
+                The object GraphWindow is analogue of object TWindow.
+                In the realization GraphWindow small changes are introduced.
+                For example, is excluded the field Number, so the windows in
+                GraphVision have not the number and can not be chosen by a
+                combination of keys Alt-n ( n from 0 up to 9).
+                In the field Flags three bit fields are in addition involved.
+                Masks description see in section "Global reference",
+                wfXXXXXX constants.
+                Value of field Palette by default equally wpGrayWindow.
+
+       Fileds   ------------------------------------------------------------
+
+        Frame   Frame: PGraphView;
+
+                Pointer to object, realizing window frame. In difference
+                from TurboVision,the object of a type a "frame" now is internal
+                for the unit Grav and is inaccessible from other units. To
+                execute any operation over these field is not recommended.
+
+    WorkSpace   WorkSpace : PGraphView;
+
+                Pointer to object " the working space " the type GraphGroup.
+                All visible elements, added by user to object GraphWindow,
+                are actually added in this group
+                ( see the method GraphWindow.Insert).
+
+      Caption   Caption : PGraphView;
+
+                Pointer to object "window title". It is not recommended to
+                execute any operation over these field.
+
+      Methods   ------------------------------------------------------------
+
+         Init   constructor Init(var Bounds: TRect; ATitle : TTitleStr;
+                                 AFlags : word);
+
+                Calls GraphGroup.Init(Bounds), assigns to the field Flags
+                value of parameter AFlags, to field Palette - value
+                wpGrayWindow, creates and initializes the group WorkSpace.
+
+                The kind of a created window depends on value of parameter
+                AFlags:
+
+
+                                       43
+
+
+                If either the flags wfThickFramed or wfThinFrame are on,
+                the window will have a frame;
+                If the flag wfTitle is on, the window will have title bar.
+                Besides flags wfClose and wfZoom are on, buttons of closing
+                ( Close ) and and scaling ( Zoom ) will be added to window
+                caption.
+
+       Insert   procedure Insert(P: PGraphView); virtual;
+
+                Adds a visible element in the window's working area.
+                Equivalent to a call
+
+                     WorkSpace^.Insert(P);
+
+                If it is necessary to add a visible element to the  window
+                (for example, scroolbar for scroller), use the call
+
+                    GraphGroup.Insert(P);
+
+
+      Palette   ------------------------------------------------------------
+
+                Objects of a type "window" are used by default
+                CGrayWindow palette.
+
+                ‘GrayWindow = #13#14#15#16#17#18#19#20#21#22#23#24#25 +
+                              #26#27#28#29#30#31#32#33#34#35#36#37#38#39;
+
+                CBlueWindow = #40#41#42#43#44#45#46#47#48#49#50#51#52 +
+                              #53#54#55#56#57#58#59#60#61#62#63#64#65#66;
+
+                CCyanWindow = #67#68#69#70#71#72#73#74#75#76#77#78#79 +
+                              #80#81#82#83#84#85#86#87#88#89#90#91#92#93;
+
+                Entries with 1 on 3 - color of the working area
+                                      (see GraphBackground ),
+                        with 4 on 8 - color for buttons:
+                                      color of a background, light, dark,
+                                      enabled, disabled.
+                        With 9 on 14 -  color of a frame:
+                                      Main, light, dark for a active window,
+                                      Main, light, dark for a inactive window.
+                        With 15 on 18 - color of title bar:
+                                      Background, text for a active window,
+                                      Background, text for a inactive window.
+                        With 19 on 23 - scrollbar colors (see CScrollBar )
+                        with 24 on 27 - scroller colors (see CScroller )
+
+
+
+                                       44
+
+
+T8x8BiosFont                                                          GFonts
+============================================================================
+
+                 -------------
+                 | TBiosFont |
+                 -------------
+                       |
+                       |
+               ----------------
+               | T8x8BiosFont |
+               ----------------
+
+               The built-in 8x8 BIOS font is the special case of BIOS font,
+               as for it there are two tables of images: one for codes
+               0 - 127, other for codes 128 - 256. The object T8x8BiosFont is
+               designed for work with the 8x8 built-in font.
+
+      Fields   -------------------------------------------------------------
+
+        Top    Top : Pointer;
+
+               Stores the pointer to the table of images for symbols with
+               codes 128 - 255.
+
+     Methods   -------------------------------------------------------------
+
+       Init    constructor Init(AName : string; ABase,ATop : Pointer;
+                                ABytes : word);
+
+               Calls TBiosFont.Init and saves the pointer to the second half
+               of the table of images ATop in the field Top.
+
+               Example:
+                  ...
+                  GetFontParams(i, Info);
+                  With Info do
+                    if TwoPart then
+                        Font:= New(P8x8BiosFont,Init(GetFontName(i),Base, Top,
+                                                     BytesPerChar)) else
+                        Font:= New(PBiosFont, Init(GetFontName(i),
+                                                   ImageTable,
+                                                   Width,
+                                                   Height,
+                                                   BytesPerChar));
+                    ...
+
+GetCharImage   function GetCharImage(Ch : Char) : Pointer; virtual;
+
+               Overrides TBiosFont.GetCharImage. If the code of symbol Ch
+               is less than 128, GetCharImage gives the pointer to a image
+               in the first half of the table, to which points the field
+               ImageTable, inherited from TBiosFont. Otherwise GetCharImage
+               gives the pointer to a image from the table, on which points
+               the field Top.
+
+
+                                       45
+
+
+
+TBGIFont                                                             GFonts
+===========================================================================
+                  ---------
+                  | TFont |
+                  ---------
+                      |
+                      |
+                ------------
+                | TBGIFont |
+                ------------
+
+                The object TBGIFont is intended to work with standard BGI fonts.
+
+       Fields   ------------------------------------------------------------
+
+          ID    ID : integer;
+
+                Contains the identification code of the BGI font, predefined
+                in the unit Graph or assigned by the function InstallUserFont.
+
+      Methods   ------------------------------------------------------------
+
+         Init   constructor Init(AName : String; AID : Integer);
+
+                Calls TFont.Init and assigns AID to the field ID.
+
+                Example:
+                   Var BGIFont: TBGIFont;
+                   Begin
+                   ...
+                      BGIFont.Init ('Triplex', TriplexFont ;
+                      { Object of type TBGIFont to work with standard font
+                        TriplexFont is created}
+                    ...
+
+CanFillBackground  function CanFillBackground : boolean; virtual;
+
+                Overrides TFont.CanFillBackground. Returns false, as standard
+                BGI fonts do not change background pixels.
+
+    TextWidth   function TextWidth(S : String) : integer; virtual;
+
+                Overrides TFont.TextWidth. Calls TextWidth function from
+                Graph unit.
+
+   TextHeight   function TextHeight(S : String) : integer; virtual;
+
+                Overrides TFont.TextHeaight. Calls TextHeight function from
+                Graph unit.
+
+      OutText   procedure OutText(S : String); virtual;
+
+                Overrides TFont.OutText. Calls OutText procedure from
+
+
+                                       46
+
+
+                Graph unit.
+
+    OutTextXY   procedure OutTextXY(Location : TPoint; S : String); virtual;
+
+                Overrides TFont.OutTextXY. Calls OutTextXY procedure from
+                Graph unit.
+
+ SetTextStyle   procedure SetTextStyle(Direction,Size : word); virtual;
+
+                Overrides TFont.SetTextStyle. Calls SetTextStyle procedure
+                from Graph unit, passing ID field as a one of parameters.
+
+GetCharHeight    function GetCharHeight(Ch : Char) : word; virtual;
+
+                 Overrides TFont.GetCharHeight.
+
+ GetCharWidth    function GetCharWidth(Ch : Char) : word; virtual;
+
+                 Overrides TFont.GetCharWidth.
+
+
+
+TBiosFont                                                             GFonts
+============================================================================
+
+                 --------------
+                 | TFixedFont |
+                 --------------
+                       |
+                       |
+                 -------------
+                 | TBiosFont |
+                 -------------
+
+                 This object is designed for work with built-in BIOS fonts.
+                 It inherits all the main methods of object TFixedFont.
+
+
+                                       47
+
+
+        Fields   -----------------------------------------------------------
+
+         Bytes   Bytes : word
+
+                 Stores the size of a image of a symbol (This field it is
+                 necessary because the size of a image of a symbol for
+                 built-in fonts can differ from that value, which can be
+                 calculated with TFixedFont.BytesPerChar method).
+
+       Methods   ----------------------------------------------------------
+
+         Init    constructor Init(AName : String; AImageTable : Pointer;
+                                  AWidth,AHeight,ABytes : word);
+
+                 Sets the fields First and Count to 0 and 255 then calls
+                 TFixedFont.Init and saves the value of ABytes into field
+                 Bytes.
+
+                 Example
+                 Var Info: BiosFontParams;
+                    Font: PFixedFont;
+                 ...
+                 Begin
+                 ...
+                    For i = 1 to 3 do begin
+                       GetFontParams(i, Info);
+                       With Info do
+                          Font:= New(PBiosFont,Init(GetFontName(i), ImageTable,
+                                                     Width, Height,
+                                                     BytesPerChar ));
+                    ...
+                    End;
+                    ...
+                 End.
+
+      See Also   BiosFontParams type, TFont.GetFontName method,
+                 GetFontParams procedure
+
+ BytesPerChar    function BytesPerChar(Ch : Char) : word; virtual;
+
+                 Overrides TFixedFont.BytesPerChar.
+                 Returns value of field Bytes.
+
+
+
+                                       48
+
+
+TBmpFilter                                                            Images
+============================================================================
+
+                -----------
+                | TFilter |
+                -----------
+                     |
+                     |
+               --------------
+               | TBmpFilter |
+               --------------
+
+
+               The TBmpFilter object is a specialized object realizes
+               graphics filter for Windows BMP files.
+               Only BMP import is realized in current version
+
+
+      Fields   -------------------------------------------------------------
+
+      Header   Header : TBitmapInfoHeader;
+
+               Contains data from information header of BMP file
+               TBitmapInfoHeader structure description can be found
+               in BP online help system.
+
+     Methods   -------------------------------------------------------------
+
+        Open   procedure Open(AName : FNameStr); virtual;
+
+               Opens a stream assotiated with file AName and stores pointer
+               to it in Stream field. Then calls GetHeader method to read
+               file information header to the Header filed.
+
+     GetSize   procedure GetSize(var ASize : TPoint); virtual;
+
+               Returns the sizes of processed image:
+
+                  ASize.X := integer(Header.biWidth);
+                  ASize.Y := integer(Header.biHeight);
+
+   GetHeader   procedure GetHeader; virtual;
+
+               Reads the information headet of BMP file to Header field.
+
+   LoadImage   procedure LoadImage(AImage : PImage); virtual;
+
+               Loads image data from Stream^ and puts it into data area
+               of image AImage^
+
+        Save   procedure Save(AName : FNameStr; AImage : PImage); virtual;
+
+               Is not realized in current version. Empty method which
+               can be overrided
+
+
+                                       49
+
+
+   SaveImage   procedure SaveImage(AImage : PImage); virtual;
+
+               Is not realized in current version. Empty method which
+               can be overrided
+
+TByteFlow                                                             ExtObj
+============================================================================
+
+                -----------
+                | TObject |
+                -----------
+                     |
+                     |
+               --------------
+               |  TByteFlow |
+               --------------
+
+               Used to store any kind of data as a stream of bytes.
+
+      Fields   -------------------------------------------------------------
+
+        Size   Size : word;
+
+               The data size given in bytes.
+
+        Data   Data : pointer;
+
+               Pointer to data associated with object.
+
+     Methods   -------------------------------------------------------------
+
+       Init    constructor Init(ASize : word; AData : pointer);
+
+               Calls TObject.Init and assigns the Size and Data
+               to ASize and AData.
+
+       Done    destructor Done; virtual;
+
+               If Data is not nil, Done disposes of the memory used
+               by the object then calls TObject.Done;
+
+       Load    constructor Load(var S : TStream);
+
+               Creates the object TByteFlow, reads Size field from
+               the stream S, allocates an appropriate amount of memory
+               according to size, then reads data from the stream S to memory
+               pointed to by the Data field.
+
+       Store   procedure Store(var S : TStream);
+
+               Writes to stream S the Size field and the data related to
+               this object.
+
+
+
+
+                                       50
+
+
+TDefaultBGIFont                                                       GFonts
+============================================================================
+
+                   ------------
+                   | TBGIFont |
+                   ------------
+                        |
+                        |
+               -------------------
+               | TDefaultBGIFont |
+               -------------------
+
+               The special case of object TBGIFont for DefaultFont font.
+               By use of this style of text, procedures OutText and OuttextXY
+               from the Graph unit do not write the text on the screen,
+               if starting location of text lies outside area of viewing,
+               therefore some methods for the object TDefaultBGIFont are
+               redefined so that to emulate text clipping.
+
+     Methods   ------------------------------------------------------------
+
+     OutText   procedure OutText(S : String); virtual;
+
+               Overrides TBGIFont.OutText. Clips text according to the
+               bounds of the viewport area.
+
+   OutTextXY   procedure OutTextXY(Location : TPoint; S : String); virtual;
+
+               Overrides TBGIFont.OutTextXY. Clips text according to the
+               bounds of the viewport area.
+
+
+TextListBox                                                         Controls
+============================================================================
+
+                ----------------
+                | GraphListBox |
+                ----------------
+                       |
+                       |
+                ---------------
+                | TextListBox |
+                ---------------
+
+               Realize an  object for work with a collection of strings,
+               i.e. functionally similar to the to object TListBox in
+               Turbo Vision.
+
+      Methods   ------------------------------------------------------------
+
+     DrawItem   procedure DrawItem(Item : integer); virtual;
+
+                Draws an element of collection Item as a string of symbols,
+                using system font and current color.
+
+
+                                       51
+
+
+  GetItemSize   procedure GetItemSize(var ItemSize : TPoint); virtual;
+
+                Returns in variable ItemSize the sizes of the image of
+                a element of the list.
+
+      GetText   function GetText(Item: Integer; MaxLen: Integer): String; virtual;
+
+                Returns a string for the element Item. In difference from
+                TListBox.GetText, parameter MaxLen defines not a string
+                length but its width in pixels for current system font.
+                Can be overrided.
+
+
+TFilter                                                              Images
+===========================================================================
+
+               -----------
+               | TObject |
+               -----------
+                    |
+                    |
+               -----------
+               | TFilter |
+               -----------
+
+               The TFilter object is an abstract object for realization of
+               various graphics data import/export filters.
+
+      Fields   ------------------------------------------------------------
+
+      Stream   Stream : PStream;
+
+               Pointer to the stream associated with processed file.
+
+   ErrorCode   ErrorCode : integer;
+
+               Stores the status of last operation. See "Global reference"
+               giXXXXXX constants for information about status codes.
+               If ErrorCode <> giOK there was an error during graphics
+               data processing.
+
+     Methods   -----------------------------------------------------------
+
+
+        Load   constructor Load(var S : TStream);
+
+               Just calls TObject.Init and does nothing more.
+               Can be overrided for TFilter descendants.
+
+        Open   procedure Open(AName : FNameStr); virtual;
+
+               Creates a stream assotiated with file AName and stores pointer
+               to it into Stream field.
+               It is an abstarct method which should be overrided.
+
+
+                                       52
+
+
+   GetHeader   procedure GetHeader; virtual;
+
+               Reads the file header of graphics data file.
+               Abstract method which should be overrided.
+
+     GetSize   procedure GetSize(var ASize : TPoint); virtual;
+
+               Returns the sizes of image into ASize variable.
+               Abstract method which should be overrided.
+
+   LoadImage   procedure LoadImage(AImage : PImage); virtual;
+
+               Reads graphical data from stream Stream^, and after some
+               actions puts it into data area of image AImage^
+               Abstract method which should be overriden.
+
+        Save   procedure Save(AName : FNameStr; AImage : PImage); virtual;
+
+               Creates a file of appropriate graphical format and stores
+               there the datas from AImage^ image calling SaveImage method.
+               Abstract method which should be overriden.
+
+   SaveImage   procedure SaveImage(AImage : PImage); virtual;
+
+               Saves into Stream^ stream data from AImage^ data area
+               in appropriate graphical format.
+               Abstract method which should be overriden.
+
+       Store   procedure Store(var S : TStream);
+
+               Stores TFilter object into stream S.
+
+
+TFixedFont                                                           GFonts
+===========================================================================
+
+               ---------------
+               | TRasterFont |
+               ---------------
+                     |
+                     |
+               --------------
+               | TFixedFont |
+               --------------
+
+               This object present methods for working with fonts which have
+               fixed sized images.
+
+       Field   ------------------------------------------------------------
+
+   CharWidth   CharWidth : word;
+
+               Width of symbols in pixels.
+
+
+
+                                       53
+
+
+     Methods   -----------------------------------------------------------
+
+       Init    constructor Init(AName : String; AImageTable : Pointer;
+                                First,Count : byte; AWidth,AHeight : word);
+
+               Calls TRasterFont.Init and assigns to the fields CharWidth and
+               CharHeight values of AWidth and AHeight accordingly.
+
+BytesPerChar   function BytesPerChar(Ch : Char) : word; virtual;
+
+                Overrides TRasterAFont.BytesPerChar. The size of an image of
+                a symbol is calculated as follows:
+
+                   i: = CharWidth div 8;
+                   If ( CharWidth mod 8) < > 0 then inc (i);
+                   BytesPerChar:= CharHeight * i;
+
+GetCharWidth   function GetCharWidth(Ch : Char) : word;  virtual;
+
+               Overrides TRasterFont.GetCharWidth. Returns CharWidth.
+
+GetCharImage   function GetCharImage(Ch : Char) : Pointer; virtual;
+
+               Overrides TRasterFont.GetCharImage.
+               Returns a pointer to an image of a symbol, if
+               FirstChar < = char code < = FirstChar + CharCount
+               and nil otherwise.
+
+   OutText     procedure OutText(S : String); virtual;
+
+               Writes string S on the screen at the current position, using
+               the character generator from the unit LowGraph
+               (see DrawChar procedure).
+
+  OutTextXY    procedure OutTextXY(Location : TPoint; S : String); virtual;
+
+               Writes string S on the screen at the position giving by
+               Location, using the character generator from the unit LowGraph
+               (see DrawChar).
+
+
+TFont                                                                GFonts
+===========================================================================
+
+               -----------
+               | TObject |
+               -----------
+                    |
+                    |
+                ---------
+                | TFont |
+                ---------
+
+               Abstract type of any font.
+
+
+                                       54
+
+
+      Fields   -------------------------------------------------------------
+
+    FontName   FontName : String;
+
+               Contains the name of font.
+
+     Methods   -------------------------------------------------------------
+
+       Init    constructor Init(AName : String);
+
+               Calls TObject.Init and sets FontName to AName.
+
+CanFillBackground    function CanFillBackground : boolean; virtual;
+
+               Returns true, if font can change the color for background
+               pixels. TFont.CanFillBackground always returns true.
+
+   TextWidth   function TextWidth(S : String) : integer; virtual;
+
+               The method TextWidth returns the length of line S in pixels.
+               It is an abstract method, which should be overriden for
+               descendants of TFont.
+
+
+  TextHeight   function TextHeight(S : String) : integer; virtual;
+
+               The method TextHeight returns the height of line S in pixels.
+               It is an abstract method, which should be overriden for the
+               descendants of TFont.
+
+     OutText   procedure OutText(S : String); virtual;
+
+               The method OutText writes the string S at the current cursor
+               position on the screen.  This is an abstract method, which
+               should be overriden.
+
+   OutTextXY   procedure OutTextXY(Location : TPoint; S : String); virtual;
+
+               The method OutTextXY writes the string S at the location
+               specified by Location. This is an abstract method,
+               which should be overriden.
+
+SetTextStyle   procedure SetTextStyle(Direction,Size : word); virtual;
+
+               Makes a font active and establishs the characteristics of
+               text drawing (direction and size). An abstract method. Should
+               not be used directly, and only indirectly through a call to
+               the global procedure SetTextStyle (see "Global Reference" ).
+
+ GetFontName   function GetFontName : String;
+
+               Returns a string with a font name.
+
+
+
+                                       55
+
+
+CetCharHeight  function GetCharHeight(Ch : Char) : word; virtual;
+
+               Returns height in pixels of the symbol Ch. This abstract
+               method should be overriden.
+
+ CetCharWidth  function GetCharWidth(Ch : Char) : word; virtual;
+
+               Returns the width in pixels of the symbol Ch. This abstract
+               method should be overriden.
+
+
+TImage                                                               Images
+===========================================================================
+               -----------
+               | TObject |
+               -----------
+                    |
+                    |
+               ----------
+               | TImage |
+               ----------
+
+               The TImage object is assigned to store an images of any size.
+
+      Fields   -----------------------------------------------------------
+
+        Size   Size : TPoint;
+
+               Image sizes in pixels.
+
+        Data   Data : PStream;
+
+               Points to stream which holds an image data.
+
+     Methods   -------------------------------------------------------------
+
+        Init   constructor Init(ASize : TPoint);
+
+               Saves ASize parameter into Size field and creates steram
+               for data storage.
+
+      Import   constructor Import(AName : FNameStr; AFilter : PFilter);
+
+               Loads the image from AName file using AFilter^ graphics data
+               filter.
+
+        Load   constructor Load(var S : TStream);
+
+               Loads the image from stream S. First loads the graphics filter,
+               then loads an image data using Filetr^.LoadImage(@Self) call.
+
+
+
+                                       56
+
+
+        Done   desctructor Done; virtual;
+
+               Deletes the stream where image data are stored, then
+               calls TObject.Done.
+
+      Export   procedure Export(AName : FNameStr; AFilter : PFilter);
+
+               Saves an image into AName file using graphics filter AFilter.
+
+GetBytesPerLine  function GetBytesPerLine : integer;
+
+               Returns size of memory required for one pixel's string
+               of image.
+
+     GetLine   procedure GetLine(Line : integer; var Buffer);
+
+               Returns image line given by parameter Line placing it into
+               Buffer area.
+
+     PutLine   procedure PutLine(Line : integer; var Buffer);
+
+               Stores a string of pixels given by Buffer into image
+               as a line Line.
+
+        Draw   procedure Draw(X,Y : integer; BitBlt : word);
+
+               Draws image onto screen. X and Y are coordinates of left-hand
+               top corner of picture in current view port. Clips an image
+               on view port boundaries.
+               BitBlt parameter sets a write mode.
+
+
+TMouseCursor                                                         ExtObj
+===========================================================================
+
+                -----------
+                | TObject |
+                -----------
+                     |
+                     |
+              ----------------
+              | TMouseCursor |
+              ----------------
+
+               TMouseCorsor object is assigned for creation, storage
+               and management with the mouse cursor.
+
+      Fields   -------------------------------------------------------------
+
+        Size   Size : TPoint;
+
+               Holds the sizes of cursor shape.
+
+
+
+                                       57
+
+
+     HotSpot   HotSpot : TPoint;
+
+               "Hot spot" coordinates inside mouse cursor.
+
+       Shape   Shape : pointer;
+
+               Points to mouse cursor shape.
+
+     Methods   -------------------------------------------------------------
+
+        Init   constructor Init(ASize, AHotSpot : TPoint;
+                                AndPlane,XorPlane : Pointer);
+
+               Calls TObject.Init; Assigns ASize and AHotSpot parameters
+               value to Size and HotSpot fields accordingly.
+               Allocates memory for mouse cursor shape and stores
+               AND mask and XOR mask.
+
+       Load    constructor Load(var S : TStream);
+
+               Reads the Size and HotSpot fields from stream S and then
+               loads a mouse shape.
+
+       Done    destructor Done; virtual;
+
+               Deallocates memory used by cursor shape and calls TObject.Done.
+
+ MakeActive    procedure MakeActive;
+
+               Changes the mouse cursor calling SetMouseShape procedure.
+
+      Store    procedure Store(var S : TStream);
+
+               Stores information about cursor shape into stream S:
+               writes the Size and HotSpot fileds and then writes
+               mouse cursor shape.
+
+
+TRasterFont                                                          GFonts
+===========================================================================
+
+                  ---------
+                  | TFont |
+                  ---------
+                      |
+                      |
+               ---------------
+               | TRasterFont |
+               ---------------
+
+               This abstract type is used to provide management of various
+               kinds of raster fonts, including built-in BIOS fonts.
+
+
+
+                                       58
+
+
+      Fields   ------------------------------------------------------------
+
+  ImageTable   ImageTable : pointer;
+
+               Points to the table of images of symbols.
+
+   FirstChar   FirstChar : byte;
+
+               The code of the first symbol, for which is determined an
+               image in the table of images.
+
+   CharCount   CharCount : byte;
+
+               Number of character images in the table less one.
+
+  CharHeight   CharHeight : word;
+
+               Height of symbols in pixels.
+
+     Methods   ------------------------------------------------------------
+
+       Init    constructor Init(AName : String; AImageTable : Pointer;
+                                First,Count : byte);
+
+               Calls TFont.Init, saves a pointer to the table of images in
+               the field ImageTable, value of parameter First in the field
+               FirstChar and value of parameter Count in the field
+               CharCount.
+
+BytesPerChar   function BytesPerChar(Ch : Char) : word; virtual;
+
+               Returns the size of a image in bytes for the symbol Ch.
+               Abstract method. Should be redefined for descendants of this
+               object.
+               TRasterFont.BytesPerChar simply returns 0.
+
+GetCharImage   function GetCharImage(Ch : Char) : Pointer; virtual;
+
+               Returns a pointer to the image of symbol Ch.
+               Abstract method. Should be overriden in descendants of this
+               object.
+               TRasterFont.GetCharImage simply returns nil.
+
+GetCharHeight  function GetCharHeight(Ch : Char) : word; virtual;
+
+               ¥à¥ªàë¢ ¥â TFont.GetCharHeight.
+
+ TextHeight    function TextHeight(S : String) : integer; virtual;
+
+               Overrides TFont.GetCharHeight.
+
+  TextWidth    function TextWidth(S : String) : integer; virtual;
+
+               Overrides TFont.TextWidth.
+
+
+                                       59
+
+
+
+TSharedResourceCollection                                            ExtObj
+===========================================================================
+
+                   ---------------------
+                   | TStringCollection |
+                   ---------------------
+                             |
+                             |
+               -----------------------------
+               | TSharedResourceCollection |
+               -----------------------------
+
+               This object is used by the object TSharedResource.
+               Each element of the collection contains the fields Resource,
+               Count and Key, which are the pointer to a resource, counter of
+               use and name of the resource.
+               The counter of use allows a resource to be used by more than
+               one object at a time, without loading the resource multiple
+               times into memory.
+               This object redefines the methods FreeItem and KeyOf.
+
+TSharedResource                                                       ExtObj
+============================================================================
+
+                   -----------
+                   | TObject |
+                   -----------
+                        |
+                        |
+               -------------------
+               | TSharedResource |
+               -------------------
+
+               Is used for management of shared resources, i.e. resources,
+               which can be used by the several "customers" simultaneously.
+               Only one copy of the resource is stored in memory for all
+               objects which use it.
+
+      Fields   -------------------------------------------------------------
+
+ ResourceFile  ResourceFile : PResourceFile;
+
+               Pointer to object of type TResourceFile, in which resources
+               are stored.
+
+     Methods   -------------------------------------------------------------
+
+       Init    constructor Init(AResourceFile : PresourceFile);
+
+               Calls TObject.Init, initializes a collection of resources,
+               and stores the value of AResourceFile to the field
+               ResourceFile.
+
+
+
+                                       60
+
+
+       Done    destructor Done; virtual;
+
+               Unloads all loaded resources, deletes the index of resources
+               and  closes the file of resources, as defined by the field
+               ResourceFile.
+
+       Count   function Count : integer;
+
+               Returns number of loaded resources.
+
+       Free    proceure Free(Key : String);
+
+               If a resource with the name 'Key' is loaded, its
+               counter of use decreases by one. If the counter becomes
+               zero, the resource is removed from memory.
+
+       Get     function Get(Key : String) : PObject;
+
+               If a resource with name 'Key' is already loaded, its
+               counter of use is incremented by one, and Get returns a pointer
+               to it. Otherwise the resource is loaded from the resource file,
+               ResourceFile. If the resource is not found in the resource
+               file, the Get returns nil.
+
+       KeyAt   function KeyAt(I : integer) : String;
+
+               Returns the name of a resource with the index number I.
+
+
+TXmsStream                                                           ExtObj
+===========================================================================
+
+                 -----------
+                 | TObject |
+                 -----------
+                      |
+                      |
+               --------------
+               | TXmsStream |
+               --------------
+
+
+               TXmsStream is a specialized TStream object derivative for
+               implemenying streams into XMS memory. The addirional fields
+               provide stream size and current position. This type of object
+               is defined for DOS real mode only.
+
+      Fields   -------------------------------------------------------------
+
+        Size   Size : LongInt;
+
+               The size of stream in bytes.
+
+
+
+                                       61
+
+
+    Position   Position : LongInt;
+
+               The curreent position within the stream. The first
+               position is 0.
+
+     Methods   -------------------------------------------------------------
+
+        Init   constructor Init(ALimit : LongInt);
+
+               Creates a XMS stream with he given minimum size in bytes.
+               Calls TStream.Init, checks if XMS is present, and if it
+               is so, tries to allocate block of extended memory enough
+               for ALimit bytes allocation. Calls Error method with argument
+               of stInitError if initialization fails.
+
+        Done   destructor Done; virtual;
+               Disposes a XMS stream and releases the used block of
+               extended memory. Never overrides.
+
+      GetPos   function GetPos : LongInt; virtual;
+
+               Returns the current position within the stream.
+               Never overrides.
+
+     GetSize   function GetSize : LongInt; virtual;
+
+               Returns the total size of the calling stream.
+               Never overrides.
+
+        Seek   procedure Seek(Pos : LongInt); virtual;
+
+               Resets the current position to Pos bytes from the start
+               of the calling stream.
+
+    Truncate   procedure Truncate; virtual;
+
+               Deletes all data on the calling stream from the current
+               position to the end. The current position is set to the new
+               end of the stream.
+
+        Read   procedure Read(var Buf; Count : word); virtual;
+
+               Reads Count bytes into the Buf buffer starting at the current
+               position. Never overrides.
+
+       Write   procedure Write(var Buf; Count : word); virtual;
+
+               Writes Count bytes from the Buf buffer to the calling stream,
+               starting at the current position.
+
+
+
+                                       62
+
+
+               G L O B A L    R E F E R E N C E                            3
+----------------------------------------------------------------------------
+
+
+BiosFontParams    type                                                GFonts
+============================================================================
+
+ Declaration   BiosFontParams =  record
+                  Width  : word;
+                  Height : word;
+                  BytesPerChar : word;
+                  case TwoPart : boolean of
+                  false : (ImageTable : Pointer);
+                  true  : (Base,Top : Pointer);
+               end;
+
+    Function   BiosFontParams describe the characteristics of built-in screen
+               fonts. It holds information on the height and width of a symbol,
+               the number of bytes per symbol and a pointer to the table of
+               images.
+               In case of BIOS 8x8 font there are two pointers to tables of
+               images:
+               Base - pointer to the first half of the table (codes 0-127),
+               Top - pointer to the second half of the table (codes 128-255).
+
+
+BitPerPlane    variable                                             LowGraph
+============================================================================
+
+ Declaration   BitPerPlane : integer;
+
+    Function   Bits per pixel in one bit plane for current videomode.
+
+
+bsXXXXXXX      constants                                                Grav
+============================================================================
+
+    Function   background style constants for GraphBackground object.
+
+   Values      constant       value       meaning
+               --------------------------------------------------------------
+               bsNone           0         background border will not be drawn
+               bsBump           1         "bump"
+               bsDip            2         "dip"
+
+
+
+BytesPerLine   variable                                             LowGraph
+============================================================================
+
+ Declaration   BytesPerLine : integer;
+
+    Function   Length of one scan line in bytes for current videomode.
+
+
+
+                                       63
+
+
+
+CanFillBackground   function                                          GFonts
+============================================================================
+
+ Declaration   function CanFillBackground : boolean;
+
+    Function   Returns true, if current font can change the color of
+               background pixels. It is equivalent to the call
+
+               PFont(Fonts^.At(CurrentFont))^.CanFillBackground;
+
+
+ConvertPixRow   procedure                                           LowGraph
+============================================================================
+
+ Declaration   procedure ConvertPixRow(var Source,Dest; Width : word;
+                                      var Palette : TPaletteType);
+
+
+    Function   Converts a string of pixels. Source is an array where
+               each pixel occupies one byte. Dest is an array each structure
+               depends from current videomode and corresponds to videomemory
+               structure. The Width parameter gives a length of string of
+               pixels. Tha Palette parameter is a color translation table.
+               ConverPixRow is used in Images unit during graphics data file
+               import.
+
+
+CstrToStr      procedure                                            EventMan
+============================================================================
+
+ Declaration   procedure CStrToStr(Source : string; var Dest : string);
+
+    Function   Copies the Source string to the Dest string removing all
+               "tilda" characters.
+
+
+CurrentFont    variable                                               GFonts
+============================================================================
+
+ Declaration   CurrentFont : integer = 0;
+
+  Function     Number of currently used font. Can be set using SetTextStyle
+               procedure form GFonts unit. Some pocedures (such as
+               Outtext,OutTextXY,TextWidth) use this variable in their work.
+
+
+CursorAreaSize  variable                                            LowGraph
+============================================================================
+
+ Declaration   CursorAreaSize : word;
+
+    Function   Size of buffer which is necessary to store screen area
+               overlapped by mouse cursor. Is set during videomode
+
+
+                                       64
+
+
+               initialization and used by mouse cursor emulation routines.
+
+
+DoneFonts      procedure                                              GFonts
+============================================================================
+
+ Declaration   procedure DoneFonts;
+
+    Function   Destroys a collection of fonts.
+
+
+DoneVideo      procedure                                            GrDriver
+============================================================================
+
+ Declaration   procedure DoneVideo;
+
+    Function   Closes the graphic subsystem.
+
+
+DrawChar       procedure                                            LowGraph
+============================================================================
+
+ Declaration   procedure DrawChar(X,Y : integer; Width,Height : word;
+                                 Fore,Back : word; FillBackgr : boolean;
+                                 Image : pointer);
+
+    Function   The character generator.  Draws the sybmol pointed to by
+               Image at X, Y with Width and Height. The color of the symbol
+               is defined by the Fore parameter. If FillBackgr is True,
+               the background is  filled in with the  Back color.
+               The drawing mode is determined by the value of variable Mode.
+               Assumes that drawing symbol is inside screen area.
+
+
+DrawImage      procedure                                            GrDriver
+============================================================================
+
+ Declaration   procedure DrawImage(X,Y : integer; var Bitmap; BitBlt : word);
+
+    Function   Draws an image on a screen. An enhanced version of PutImage
+               procedure fron Graph unit. Makes image clipping on a
+               viewport bounds.
+
+
+DrawMouseShape   procedure                                          LowGraph
+============================================================================
+
+ Declaration   procedure DrawMouseShape(X,Y : integer; var Shape);
+
+    Function   Draws a mouse cursor. X and Y parameters are a top left-hand
+               corner coordinates. The Shape parameter is a buffer where
+               cursor masks are stored.
+               This procedure makes mouse cursor clipping on the screen
+               boundaries. Current library version supports only
+
+
+                                       65
+
+
+               16x16 mouse cursors.
+
+
+DriverMode     variable                                            GrDriver
+============================================================================
+
+ Declaration   DriverMode : integer = Vga640x480;
+
+    Function   Defines videomode for driver given by DriverType variable.
+               To set a required videomode it is necessary to initialize
+               DriverMode variable by appropriate value before
+               InitVideo procedure call:
+
+                  DriverType := Vesa16;          { VESA 16 color driver }
+                  DriverMode := Vesa16_1024x768; { 1024 x 768 mode }
+                  InitVideo;
+
+    See also   DriverType, InitVideo.
+
+
+
+DriverPaths   variable                                             GrDriver
+============================================================================
+
+ Declaration   DriverPaths : array[0..2] of string = ('','','');
+
+    Function   Is used by InitVideo procedure during graphic subsystem
+               initialization for required BGI driver search.
+               It is assume by default that BGI drivers are placed in
+               the program startup directory. If not, it is necessary to
+               define  the directory path where the driver can be found
+               before InitVideo procedure call:
+
+                 DriverType := Vesa16;     { Vesa 16 colors}
+                 DriverMode := Vesa16_800x600;
+                 DriverPaths[DriverType] := 'c:\tp\bgi';
+                 InitVideo;
+
+
+DriverType     variable                                            GrDriver
+============================================================================
+
+ Declaration   DriverType : integer = StandardVga;
+
+    Function   Defines videodriver type which will be used during program
+               execution.
+
+               Valid driver types are:
+
+                 StandardVGA - to use standard VGA.
+                 Vesa16      - VESA 16 color driver will be used.
+                 Vesa256     - VESA 256 color driver will be used.
+
+               By default standard VGA is used.
+
+
+                                       66
+
+
+               To use driver type other than defaukt it is necessary
+               to assign an appropriate value to DriverType variable before
+               InitVideo procedure call.
+
+
+    See also   DriverMode, InitVideo.
+
+
+EmulateMouseCursor   variable                                       LowGraph
+============================================================================
+
+ Declaration   EmulateMouseCursor : boolean = false;
+
+    Function   Mouse cursor emulation flag.
+               By default the mouse cursor emulation is off, and cursor
+               drawing will be made by system mouse driver.
+               But there were some reasons to add a mouse cursor emulation:
+               first, standard mouse drivers don't support VESA video
+               modes; second, some mouse drivers may cause problems with
+               GraphVision usage. The mouse cursor emulation can avoid both
+               these problems.
+
+               To turn a mouse cursor emulation on just set
+               the EmulateMouseCursor  variable to true before InitVideo
+               procedure call:
+
+                 EmulateMouseCursor := true;
+                 InitVideo;
+                 InitEvents;
+                 .....
+
+    See also   InitEvents.
+
+
+
+ExtractImage   procedure                                            LowGraph
+============================================================================
+
+ Declaration   procedure ExtractImage(X1,Y1,X2,Y2 : integer; var Source, Dest);
+
+    Function   Copies part of image from Source buffer to Dest buffer.
+               The X1,Y1,X2,Y2 parameters are coordinates of extracted block
+               in pixels. The structure  of the Source and Dest buffers
+               is the same as GetImage/PutImage data structure.
+
+
+FalseMode      variable                                             LowGraph
+============================================================================
+
+ Declaration   FalseMode : byte;
+
+    Function   Used internally by InitEvents for mouse initialization under
+               VESA modes. The InitVideo procedure sets up an appropriate
+               value for this variable. It is a code of one from "standard"
+
+
+                                       67
+
+
+               videomodes, supported by mouse driver.
+               Value $12 is used for VESA 16 color modes,
+               value $13 is used for VESA 256 color modes.
+               Videomode stored in FalseMode variable is placed to $40:$49
+               address before mouse initialization. After "mouse reset"
+               function call the mouse driver will know the current videomode
+               as standard graphic mode and will work properly except
+               mouse cursor drawing.
+
+
+FillBackGround   variable                                            GFonts
+============================================================================
+
+ Declaration   FillBackground  : boolean = true;
+
+    Function   If FillBackGround is True, the background pixels of output
+               characters will be filled in with the last color specified
+               by SetFillStyle.
+
+                  FillBackground := true;
+                  SetFillStyle(SolidFill,Yellow);
+                  OutText('Text with yellow background');
+                 ......
+                  FillBackGround := false;
+                  OutText('Do not fill background');
+
+
+Fonts          variable                                               GFonts
+============================================================================
+
+ Declaration   Fonts : PCollection;
+
+    Function   Pointer to a collection of font objects. The font collection
+               is created by the procedure InitFonts.
+
+    See also   TFont, InitFonts
+
+
+GetNearestColor   function                                          LowGraph
+============================================================================
+
+ Declaration   function GetNearestColor(Count : Integer;
+                                      rgbRed,rgbGreen,rgbBlue : byte) : byte;
+
+
+    Function   For color given by rgbRed,rgbGreen and rgbBlue components
+               returns an index of a nearest color from BIOS standard
+               palette. The Count parameter gives a number of scanned
+               palette elements.
+               Used in the Images unit to create the translation table from
+               imported image' internal palette to the standard BIOS palette.
+
+     See also  TPaletteType, ConvertPixRow
+
+
+
+                                       68
+
+
+Hot            variable                                             Eventman
+============================================================================
+
+ Declaration   Hot : TPoint = (X : 0, Y :0 );
+
+    Function   Hot spot coordinates inside current mouse cursor shape.
+               Is used by mouse cursor drawing procedures when
+               EmulateMouseCursor = true;
+
+
+InitEvents     procedure                                            EventMan
+============================================================================
+
+ Declaration   procedure InitEvents;
+
+    Function   Initializes event manager. If mouse driver is present
+               and EmulateMouseCursor = true, hooks an interrupt vector for
+               int $33, enabling its own procedure to handle mouse functions
+               calls.
+
+    See also   EmulateMouseCursor, FalseMode
+
+
+InitFonts      procedure                                              GFonts
+============================================================================
+
+ Declaration   procedure InitFonts;
+
+    Function   Initialize a collection of fonts, adds an object of
+               type TDefaultBGIFont (so DefaultFont is always present,
+               and declared as font number 0), defines number of built-in
+               fonts by calling the function GetMaxFont, and for each of
+               these fonts calls the procedure GetFontParams, and creates
+               an object of type TBiosFont (or T8x8BiosFont for 8x8 font)
+               and adds this object to the font collection.
+
+
+InitVideo      procedure                                            GrDriver
+============================================================================
+
+ Declaration   procedure InitVideo;
+
+    Function   Initializes graphics subsystem and sets up required videomode.
+               Acts as follows:
+                - Installs BGI drivers which names are in VesaDriverNames
+                  array;
+                - Calls BGI driver registration procedure if PegisterProc
+                  variable is not nil;
+                - Calls InitGraph procedure;
+                - Depending of current videomode sets up the values of
+                 following variables:
+                     SwitchBank,
+                     ScreenWidth,
+                     ScreenHeight,
+
+
+                                       69
+
+
+                     BitPerPlane,
+                     Planes
+                     BytesPerLine
+
+               If an error occurs during videomode initialization, an error
+               message outputs to the screen and program halts.
+
+
+LockMouseCursor   variable                                              Grav
+============================================================================
+
+ Declaration   LockMouseCursor : word = 0;
+
+    Function   Disables the change of mouse cursor shape when not zero.
+
+
+MinWinSize     variable                                                 Grav
+============================================================================
+
+ Declaration   MinWinSize: TPoint = (X: 124; Y: 84);
+
+    Function   Defines the minimum size of GraphWindow and its descendants.
+
+MouseInRect    function                                             EventMan
+============================================================================
+
+ Declaration   function MouseInRect(Bounds : TRect) : boolean;
+
+    Function   Returns true, if the mouse pointer is completely or
+               partially within the area Bounds. Parameter Bounds should
+               contain global ( screen ) coordinates.
+               Example
+                  ...
+                  GetExtent(R);
+                  With R do begin
+                     MakeGlobal(A, A);
+                     MakeGlobal( B, B);
+                  End;
+                  If MouseInRect(R) then HideMouse;
+                  ...
+
+MouseOwner     variable                                                 Grav
+============================================================================
+
+ Declaration   MouseOwner : PGraphView = nil;
+
+    Function   Points to view whithin which boundaries the mouse is placed
+               at current time.
+
+
+
+                                       70
+
+
+MouseShape     variable                                             EventMan
+============================================================================
+
+ Declaration   MouseShape : pointer = nil;
+
+    Function   Points to current mouse cursor shape.
+
+
+MoveBlock      procedure                                            GrDriver
+============================================================================
+
+ Declaration   procedure MoveBlock(X1,Y1,X2,Y2 : integer;
+                                  DeltaX,DeltaY : integer);
+
+    Function   Moves the block of pixels to a new location.
+               X1,Y1,X2 and Y2 parameters are coordinates of a pixels block
+               location. Parameters DeltaX and DeltaY determine distance
+               and direction of move.
+               Makes clipping on a current viewport boundaries.
+
+    See also   MovePixels
+
+
+MovePixels     procedure                                            LowGraph
+============================================================================
+
+ Declaration   procedure MovePixels(X1,Y1,X2,Y2 : integer;
+                                   DeltaX,DeltaY : integer);
+
+    Function   Moves the block of pixels to a new location.
+               X1,Y1,X2 and Y2 parameters are coordinates of a pixels block
+               location. Parameters DeltaX and DeltaY determine distance
+               and direction of move.
+               Assumes all coordinates are inside screen area.
+
+
+ofXXXXXX       constants                                                Grav
+============================================================================
+
+    Function   New flags for GraphView.Options field.
+
+      Values   Constant         Meaning
+               --------------------------------------------------------------
+               ofNoDrawSelect   View doesn't draw itself when becomes selected.
+               ofResizeable     View can change its size.
+               ofMoveable       View can be moved.
+
+
+
+
+                                       71
+
+
+OutText        procedure                                              GFonts
+============================================================================
+
+ Declaration   procedure OutText(S : String);
+
+    Function   Draws string on the screen starting current position
+               and using current font.
+               Equivalent to the call
+                  PFont(Fonts^.At(CurrentFont))^.OutText(S);
+
+     See also  TFont.OutText, CurrentFont, Fonts
+
+
+OutTextXY      procedure                                             GFonts
+============================================================================
+
+ Declaration   procedure OutTextXY(Location : TPoint; S : String);
+
+    Function   Draws string on the screen starting Locationt position
+               and using current font.
+
+               Equivalent to the call
+                  PFont(Fonts^.At(CurrentFont))^.OutText(Location,S);
+
+    See also   TFont.OutText, CurrentFont, Fonts
+
+
+
+Planes         variable                                             LowGraph
+============================================================================
+
+ Declaration   Planes : integer;
+
+    Function   Number of bit planes for current videomode.
+               Sets up during videomode initialization.
+
+
+
+                                       72
+
+
+RegisterProc   variable                                             GrDriver
+============================================================================
+
+ Declaration   RegisterProc : procedure = nil;
+
+    Function   Points to the BGI driver registration procedure.
+               The InitVideo procedure checks this variable, and if it is
+               not nit, calls the custom registration procedure which
+               RegisterProc variable points to.
+
+                 procedure MyRegisterProc;
+                 begin
+                 ...
+                 end;
+
+                 begin
+                    RegisterProc := MyRegisterProc;
+                    ...
+                    InitVideo;
+                    ...
+                 end;
+
+    See also   InitVideo.
+
+
+ScreenHeight   variable                                             LowGraph
+============================================================================
+
+ Declaration   ScreenHeight : integer;
+
+    Function   Set by InitVideo to the screen height in pixels for current
+               videomode.
+
+
+ScreenWidth    variable                                             LowGraph
+============================================================================
+
+ Declaration   ScreenWidth : integer;
+
+    Function   Set by InitWideo to the screen width in pixels.
+
+
+SelectFont     procedure                                              GFonts
+============================================================================
+
+ Declaration   procedure SelectFont(Font : integer);
+
+    Function   If font with number Font is present in a font collection, it
+               becomes current (variable CurrentFont takes value of
+               Font). If you use BGI fonts, this procedure need
+               not be used. It is necessary to use the procedure
+               SettextStyle instead (see below).
+
+
+
+
+                                       73
+
+
+SetExclusiveArea   procedure                                        EventMan
+============================================================================
+
+ Declaration   procedure SetExclusiveArea(Bounds : TRect);
+
+    Function   Sets coordinates of disabled area for mouse cursor.
+               If mouse cursor will be placed whithin that area,
+               it will be hidden.
+
+
+SetMouseCursor  procedure                                           EventMan
+============================================================================
+
+ Declaration   procedure SetMouseShape(HotSpot,Size : TPoint; Shape : pointer);
+
+    Function   Changes the shape of mouse cursor. The Shape parameter points
+               to new cursor shape. The HotSpoit parameter contains
+               coordinates of hot spot inside mouse cursor.
+               The Size parameter always should be (16,16) because current
+               version of GraphVision supports mouse cursors of that size
+               only.
+
+
+SetTextStyle   procedure                                              GFonts
+============================================================================
+
+ Declaration   procedure SetTextStyle(Font,Direction : word; CharSize : word);
+
+    Function   Makes font Font current with the procedure SelectFont call,
+               then calls the method SetTextStyle for current font:
+
+               PFont(Fonts^.At(CurrentFont))^.SetTextStyle(Direction,CharSize);
+
+    See also   TFont.SetTextStyle, CurrentFont, Fonts
+
+
+SetupMethods16   procedure                                          LowGraph
+============================================================================
+
+ Declaration   procedure SetupMethods16
+
+    Function   Used internally by InitVideo procedure for 16 color modes
+               initialization.
+
+SetupMethods256   procedure                                         LowGraph
+============================================================================
+
+ Declaration   procedure SetupMethods256
+
+    Function   Used internally by InitVideo procedure for 256 color modes
+               initialization.
+
+
+
+                                       74
+
+
+SetWriteMode   procedure                                             GrDriver
+============================================================================
+
+ Declaration   procedure SetWriteMode(WriteMode : integer);
+
+    Function   Sets up the write mode for drawing operations.
+               Similar to SetWriteMode procedure from Graph unit but
+               additionally stores current write mode value into
+               Mode variable used by some procedures from LowGraph unit.
+
+
+StdResource    variable                                               ExtObj
+============================================================================
+
+ Declaration   StdResource : PResourceFile = nil;
+
+               Points to TResourceFile object used for standard resources
+               access.
+
+StdSharedResource   variable                                         ExtObj
+============================================================================
+
+ Declaration   StdSharedResource : PSharedResource = nil;
+
+               Points to collection of shared resources.
+
+    See also   TSharedResource
+
+
+SwitchBank     variable                                             LowGraph
+============================================================================
+
+ Declaration   SwitchBank : boolean = false;
+
+    Function   Is set by InitVideo procedure during videomode initialization.
+               Used by drawing procedures from LowGraph unit to detect
+               if videomemory bank switching is necessary.
+
+
+SystemFont     variable                                               GFonts
+============================================================================
+
+ Declaration   SystemFont : integer = 0;
+
+    Function   Number of font in afont collection used as  system font.
+               The system font is used for text drawing in menus,
+               status bar and dialog boxes.
+
+TextHeight     function                                               GFonts
+============================================================================
+
+ Declaration   function TextHeight(S : string) : integer;
+
+    Function   Returns the height of text for  current font.
+
+
+                                       75
+
+
+               Equivalent to the call
+
+                     PFont(Fonts^.At(CurrentFont))^.TextHeight(S);
+
+    See also   TFont.TextHeight, Fonts, CurrentFont
+
+
+TextWidth      function                                               GFonts
+============================================================================
+
+ Declaration   function TextWidth(S : String) : integer;
+
+    Function   Returns the width of text for current font.
+               Equivalent to the call
+
+                  PFont(Fonts^.At(CurrentFont))^.TextWidth(S);
+
+    See also   TFont.TextWidth, Fonts, CurrentFont
+
+
+
+TPaletteType   type                                                 LowGraph
+============================================================================
+
+ Declaration   TPaletteType = record
+                  Size : word;
+                  Colors : array[0..255] of byte;
+               end;
+
+    Function   Records of type TPaletteType are used in common as a translation
+               tables for color conversion from internal graphics file palette
+               to BIOS standard palette.
+
+    See also   GetNearestColor, ConvertPixRow.
+
+
+Vesa16Modes    array                                                GrDriver
+============================================================================
+
+ Declaration   Vesa16Modes : array[0..2] of integer =
+                         (Vesa16_800x600,Vesa16_1024x768,Vesa16_1280x1024);
+
+   Function    Maps internal GraphVision VESA 16 color mode numbers to the
+               mode numbers for currently used BGI driver.
+               Used by InitVideo procedure for graphics subsystem
+               initialization.
+               The values for array elements may be changed before InitVideo
+               call if necessary:
+
+                 Vesa16Modes[0] := 16;
+                 Vesa16Modes[1] := 17;
+                 Vesa16Modes[2] := 18;
+                 .....
+                 InitVideo;
+
+
+                                       76
+
+
+
+Vesa256Modes   array                                                GrDriver
+============================================================================
+
+ Declaration   Vesa256Modes : array[0..4] of integer =
+                  (Vesa256_640x400, Vesa256_640x480, Vesa256_800x600,
+                   Vesa256_1024x768,Vesa256_1280x1024);
+
+    Function   Maps internal GraphVision VESA 256 color mode numbers to the
+               mode numbers for currently used BGI driver.
+               Used by InitVideo procedure for graphics subsystem
+               initialization.
+               The values for array elements should be changed before
+               InitVideo call in case VESA 256 color modes will be used:
+
+                 Vesa256Modes[0] := 21;
+                 Vesa256Modes[1] := 22;
+                 .....
+                 InitVideo;
+
+
+VesaDriverNames  array                                              GrDriver
+============================================================================
+
+ Declaration   VesaDriverNames : array[1..2] of string[20] =
+                                ('Vesa16','');
+
+    Function   Array of names for used BGI drivers.
+               Used by InitVideo procedure for BGI drivers installation
+               and registration.
+               By default, VESA16.bgi driver is used for VESA 16 color modes;
+               name of BGI driver for VESA 256 color modes is undefined.
+               But you can use all avaliable BGI drivers for VESA modes.
+               Just redefine names of used drivers before InitVideo call:
+
+                  VesaDriverNames[Vesa16] := 'MyVesa16';
+                  VesaDriverNames[Vesa256] := 'Svga';
+
+
+
+
+wfXXXXXX       constants                                                Grav
+============================================================================
+
+    Function   New masks for GraphWindow.Flags field.
+
+    Values     constant         meaning
+               --------------------------------------------------------------
+               wfThickFrame     Window has thick frame
+               wfThinFrame      Window has thin frame
+               wfFramed         Window has frame
+               wfTitle          Window has title bar
+
+
+
+
+                                       77
+
+
+Xms_Addr       variable                                                  Xms
+============================================================================
+
+ Declaration   Xms_Addr : pointer = nil;
+
+    Function   Entry point address of XMS manager
+               If Xms_Addr = nil, it means XMS driver was not installed or
+               XMS memory was not initialized.
+
+
+Xms_FreeMem    procedure                                                 Xms
+============================================================================
+
+ Declaration   procedure Xms_FreeMem(Handle : word);
+
+    Function   Disposes block of extended memory allocated previously
+               by Xms_GetMem function call and linked with Handle
+               descriptor. The Xms_Status variable will show exit code
+               of this operation.
+
+
+Xms_GetMem     function                                                 Xms
+===========================================================================
+
+ Declaration   function Xms_GetMem(Size : word) : word;
+
+    Function   Allocates block od extended memory and returns descriptor
+               of allocated block. If function returns 0 it means the
+               memory allocation operation failed. In this case Xms_Status
+               variable holds an error code.
+               The Size parameter gives the size ofallocated memory
+               in 1024 bytes blocks.
+
+
+Xms_Init       function                                                  Xms
+============================================================================
+
+ Declaration   function Xms_Init : boolean;
+
+    Function   Detects if XMS driver is present.
+               Returns true if extended memory manager was installed
+               and stores its entry point address into Xms_Addr variable.
+
+
+Xms_Initialized   variable                                               Xms
+============================================================================
+
+ Declaration   Xms_Initialized : boolean = false;
+
+    Function   Xms_Initialized = true if extended memory manager is present.
+
+
+
+                                       78
+
+
+Xms_MaxAvail   function                                                  Xms
+============================================================================
+
+ Declaration   function Xms_MaxAvail : word;
+
+    Function   Returns the size of largest available extended memory block
+               in Kbytes.
+
+
+Xms_MemAvail   function                                                  Xms
+============================================================================
+
+ Declaration   function Xms_MemAvali : word;
+
+    Function   Returns the amount of all free extended memory in Kbytes.
+
+
+Xms_MoveMem    procedure                                                 Xms
+============================================================================
+
+ Declaration   procedure Xms_MoveMem(Source : pointer; SHandle : word;
+                                     Dest  : pointer; DHandle : word;
+                                     Count : LongInt);
+
+
+    Function   Moves data from/to extended memory
+
+               Parameters:
+
+               SHandle - Descriptor of source block;
+               DHandle - descriptor of destination block;
+               Source - 32-bit offset to first moved byte in source block.
+               Dest   - 32-bit offset in destination block.
+               Count  - count of moved bytes.
+
+               If SHandle = 0 then Source interprets as a pointer
+               in conventional memory. This same is true for DHandle
+               and Dest.
+
+               Value of Count parameter should be even.
+
+
+Xms_ResizeMem  procedure                                                 Xms
+============================================================================
+
+ Declaration   procedure Xms_ResizeMem(Handle,Size : word);
+
+    Function   Changes size of previously allocated and linked with Handle
+               descriptor. The Size parameter gives a new memory block size.
+               Exit code of this operation will be saved in Xms_Status
+               variable.
+
+
+
+                                       79
+
+
+Xms_Status     variable                                                  Xms
+============================================================================
+
+ Declaration   Xms_Status : byte
+
+               Holds an exit code of last extended memory operation.
+               if Xms_Status value is other than zero it means the operation
+               falied.
+               Detailed information about possible exit codes can be found
+               in XMS 2.0/3.0 specification.
+
+
+
+                                       80
+
+
+
+               R E S O U R C E S                                        III
+---------------------------------------------------------------------------
+
+               The GraphVision programs use various external resources
+               such as mouse cursor shapes, icons and image sets for
+               bitmap buttons. All these resources are stored in
+               Standard.rsc file, distributed with GraphVision package.
+
+
+               What is in Standard.rsc                                    1
+---------------------------------------------------------------------------
+
+               1. Mouse pointer images:
+
+                  "IBEAM" - used when entering in a data-entry objects;
+                  "MOVE" - window moving;
+                  "POINTINGHAND" - used when selecting menu items;
+                  "RESIZEHOR" - horizontal window resizing;
+                  "RESIZEVERT" - vertical window resizing;
+                  "STANDARD" - standard cursor (arrow);
+                  "WAIT" - hour glass shaped object to indicate a
+                           long operation.
+
+               2. A collection of images for buttons, which are generally
+                  used with dialogs:
+
+                  "ABORT"
+                  "CANCEL"
+                  "CLEAR"
+                  "HELP"
+                  "IGNORE"
+                  "NO"
+                  "OK"
+                  "OPEN"
+                  "REPLACE"
+                  "RETRY"
+                  "SETUP"
+                  "YES"
+
+               3. Collection of images for buttons, used internally
+                  by GraphVision:
+
+                  "CHECKBOX" - checkbox image collection;
+                  "RADIOBUTTON" - radiobutton omage collection;
+                  "DOWN" - down arrow;     \
+                  "LEFT" - left arrow;       \ are used by scrollbars;
+                  "RIGHT" - right arrow;     /
+                  "UP" - up arrow;         /
+                  "ZOOM" - button of scaling of a window
+
+
+
+                                       81
+
+
+               4. Picture used in message boxes:
+
+                  "CONFIRM"
+                  "ERROR"
+                  "INFORMATION"
+                  "WARNING"
+
+
+               How to load a resource                                     2
+---------------------------------------------------------------------------
+
+               When a GraphVision program is started, and object of type
+               TResource file is attached to a resource to the standard
+               resource file.  A pointer to this file is called StdResource.
+               As far as all resources are objects and have an unique name,
+               they can be loaded by the following method:
+
+                   StdResource^.Get('NAME');
+
+               where NAME is the name of the resource.  This call returns a
+               pointer to the resource.  The name of the resource must be
+               named exactly as they are defined in the resource file.  They
+               are case-sensitive.
+               If the resource can not be found by Get, an Nil pointer will
+               be returned.  The method Get returns a pointer to PObject,
+               therefore typecasting will be necessary.
+
+               How resources are stored                                   3
+---------------------------------------------------------------------------
+
+               The collections of images are stored in the file Standard.rsc
+               as objects of type TCollection; ELEMENTS of a collection are
+               objects of type TImage.
+               Pictures are stored as objects of type TImage, and mouse
+               pointers are stored as object of type TMouseCursor.
+
+
+               How to add a new resources                                 4
+---------------------------------------------------------------------------
+
+               GraphVision package includes a little utility, AddResrc.exe,
+               which allows to add a new resources to Standard.rsc file.
+               This utility just imports a new resources and doesn't have
+               any tools for its creation.
+               But as far as all images are stored in resource file as
+               Windows bitmaps, it is possible to create it using picture
+               editors which support this graphics data format.
+               It is preferable to use 16 color images because they are
+               can be used with both 16 color and 256 color modes.
+               It is preferable also to use RLE4 encoding, because this kind
+               of Windows bitmaps requires less disk space and loads faster.
+               One little remark: although GraphVision has any tools
+               for translation from internal image palettes to standard BIOS
+               palette, their results sometimes may be inappropriate.
+
+
+                                       82
+
+
+               For this reason it is recommended to use palette colors
+               close by standard BIOS colors for 16 color images.
+
+
+               To add a new mouse cursor shape, it is necessary to create
+               file on a disk with the following structure:
+
+               MouseData = record
+                 SizeX : word;                  { width }
+                 SizeY : word;                  { height }
+                 HotX  : word;                  { X coordinate of hot spot}
+                 HotY  : word;                  { Y coordinate of hot spot}
+                 AndMask : array[0..15] of word; { AND mask }
+                 XorMask : array[0..15] of word; { XOR mask }
+               end;
+
+               Remember that only 16x16 mouse shapes are supported by
+               current version of GraphVision.
+
+
+
+
+                                       83
+
+
+               H I N T S   A N D   T I P S                               IV
+---------------------------------------------------------------------------
+
+               GraphVision gives possibility to use the same executable
+               module with various configuration without recompilation.
+               This chapter describes some variables which can be used for
+               it. It is your responsibility how to use these features -
+               to pass values for it as a parameters or to use a kind
+               of configuration file.
+
+               Videomode setup                                            1
+---------------------------------------------------------------------------
+
+               To set up the required videomode, it is necessary to assign
+               appropriate values to DriverType and DriverMode variables
+               before application initialization.
+               The DriverType variable defines type of used logical
+               video driver. A set of logical drivers is fixed and unchanged
+               for GraphVision. Each logical driver uses real BGI driver
+               which may be changed.
+               The DriverMode variable defines used videomode for used
+               logical video driver. GraphVision defines the following
+               constants for different logical video driver:
+
+                  StandardVGA = 0      -  driver for standard VGA;
+                  Vesa16      = 1      -  VESA 16 color driver;
+                  Vesa256     = 2      -  VESA 256 driver.
+
+               Videomode constants for each driver are in the following
+               table:
+
+               ------------------------------------------------------------
+               constant            |  value   |   mode
+               ------------------------------------------------------------
+               VGA640x480          |  VGAHI   |  640 x 480 x 16
+
+               VESA16_800x600      |    0     |  800 x 600 x 16
+               VESA16_1024x768     |    1     |  1024 x 768 x 16
+               VESA16_1280x1024    |    2     |  1280 x 1024 x 16
+
+               VESA256_640x400     |    0     |  640 x 400 x 256
+               VESA256_640x480     |    1     |  640 x 480 x 256
+               VESA256_800x600     |    2     |  800 x 600 x 256
+               VESA256_1024x768    |    3     |  1024 x 768 x 256
+               VESA256_1280x1024   |    4     |  1280 x 1024 x 256
+               -------------------------------------------------------------
+
+               StandardVGA driver and VGA640x480 mode are used by default:
+
+                  DriverType := StandardVga;
+                  DriverMode := VGA640x480;
+
+
+
+                                       84
+
+
+               For example, we need 800 x 600 x 256 mode. Then it is
+               necessary to assign an appropriate values to DriverType and
+               DriverMode variables:
+
+               DriverType := Vesa256;
+               DriverMode := VESA256_800x600;
+
+               The InitVideo procedure called by GraphApplication.Init
+               will set up required videomode using values of those variables.
+
+               But there is a question - which BGI driver will be used
+               for each logical driver?
+               There are no problem with StandarVGA - EGAVGA.bgi will be used.
+               As for Vesa16 and Vesa256 logical drivers,
+               the VesaDriverNames array should be used to establsh link
+               between those logical drivers and real BGI drivers.
+               By default, this array contains the following values:
+
+                  VesaDriverNames[Vesa16] := 'vesa16';
+                  VesaDriverNames[Vesa256] := '';
+
+               As you can see, Vesa16 logical driver is linked by default
+               with VESA16.bgi driver, and BGI driver for Vesa256 is
+               not assigned.
+               Let's suppose, we need to link Vesa16 driver with MyVesa16.bgi
+               driver, and Vesa256 driver -  with SVGA256.bgi driver.
+               In this case it is necessary to assign the following values
+               to VesaDriverNames array elements:
+
+                  VesaDriverNames[Vesa16] := 'myvesa16';
+                  VesaDriverNames[Vesa256] := 'svga256';
+
+               When Turbo Pascal garphic subsystem is initialized, it tries
+               to find the required BGI driver in program starting directory.
+               If drivers are placed somewhere else, it is necessary to
+               specify the path to the directory where BGI driver can be found.
+               The DriverPaths array is used for this purpose:
+
+                  DriverPaths : array[0..2] of string = ('','','');
+
+               To specify the paths to the required BGI drivers just
+               assign the appropriate values to elements of this array:
+
+                  DriverPaths[StandardVga] := 'c:/tp/oldbgi';
+                  DriverPaths[Vesa256] := 'c:/tp/newbgi';
+
+
+               There is one more problem. In common it relates to BGI drivers
+               for VESA 256 color modes. The videomode numbers are fixed
+               in GraphVision, therefore the mapping from logical videomode
+               numbers to real BGI driver modes is necessary.
+               The arrays Vesa16Modes and Vesa256 modes are helpfull in
+               this case.
+               Let's suppose, the numbers from 31 to 35 are assigned for
+
+
+                                       85
+
+
+               VESA modes in SVGA256.bgi driver. Therefore it is necessary
+               to assign the following values to Vesa256Modes array elements:
+
+                  Vesa256Modes[Vesa256_640x400] := 31;
+                  Vesa256Modes[Vesa256_640x480] := 32;
+                  Vesa256Modes[Vesa256_800x600] := 33;
+
+               and so on.
+
+
+
+               Linking BGI drivers with GraphVision executables            2
+----------------------------------------------------------------------------
+
+               Turbo Pascal allows you to link BGI drivers with executable
+               module. In this case it is necessary to register BGI driver
+               into graphics subsystem.
+               For this purpose the RegisterProc variable was added to
+               the GrDriver module. It points to registration procedure
+               defined by programmer. By default the registration procedure
+               is not assigned:
+
+                  RegisterProc : procedure = nil;
+
+               If you need to register BGI drivers into graphic subsystem,
+               just add your own registration procedure and assign
+               pointer to it to RegisterProc variable:
+
+               procedure MyRegisterProc;
+               begin
+                  ...
+               end;
+
+               RegisterProc := MyRegisterProc;
+
+
+
+               BGI drivers and DPMI                                        3
+----------------------------------------------------------------------------
+
+               There are no problem with EGAVGA.bgi and VESA16.bgi drivers,
+               which support DPMI.
+               Unfornately, most of known drivers for 256 modes are old style
+               drivers and can be used only with real mode programs.
+               I know only one 256 color BGI driver which supports both
+               real and protected modes. It is a driver written by
+               Ullrich von Bassewitz, email: uz@wushel.sunflower.sub.org.
+               This driver is a part of svga333b.zip file, which can be found
+               on various ftp sites.
+
+
+
+                                       86
+
+
+               Mouse cursor under VESA modes                               4
+----------------------------------------------------------------------------
+
+               Practically there are no standard mouse drivers which support
+               VESA modes. For this reason the possbility of mouse cursor
+               emulation was added.
+               The EmulateMouseCursor variable defined in LowGraph unit
+               manages with mouse cursor emulation. By default it is off:
+
+                  EmulateMouseCursor : boolean = false;
+
+               To turn it on just set the EmulateMouseCursor variable to
+               true before appllication initialization:
+
+                  EmulateMouseCursor := true;
+                  ....
+                  MyApp.Init;
+
+               It may be useful to use mouse cursor emulation with some
+               old mouse drivers. If you have troubles with GraphVision
+               and your mouse driver, try to turn mouse cursor emulation on.
+               Don't change value of this variable during program execution!
+               It may cause unpredicable results.

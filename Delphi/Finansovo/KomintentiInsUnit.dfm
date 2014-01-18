@@ -1,0 +1,42 @@
+object KomintentInsForm: TKomintentInsForm
+  Left = 216
+  Top = 202
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = #1050#1086#1084#1080#1085#1090#1077#1085#1090#1080
+  ClientHeight = 300
+  ClientWidth = 481
+  Color = clBtnFace
+  Font.Charset = RUSSIAN_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  OldCreateOrder = False
+  Position = poDefault
+  Visible = True
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object StringGrid: TStringGrid
+    Left = 2
+    Top = 8
+    Width = 472
+    Height = 288
+    BorderStyle = bsNone
+    Color = clActiveBorder
+    ColCount = 3
+    DefaultRowHeight = 17
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goDrawFocusSelected, goRowSelect, goThumbTracking]
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+    OnDrawCell = StringGridDrawCell
+    OnKeyDown = StringGridKeyDown
+    OnKeyPress = StringGridKeyPress
+    OnSelectCell = StringGridSelectCell
+  end
+end

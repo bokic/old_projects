@@ -1,0 +1,2 @@
+Zabeleska 1: Imam "memory leak" koga datotekata "Centrala.mdb" kje ja nema na rabotniot direktorium.
+Zabeleska 2: Za krajnata verzija da ne se zaboravi da se vkluci "OnStart()" vo "CCentralaDlg::OnInitDialog"																					   |

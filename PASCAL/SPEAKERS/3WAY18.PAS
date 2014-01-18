@@ -1,0 +1,52 @@
+{$A+,B-,D+,E-,F-,G+,I+,L+,N+,O-,P-,Q-,R-,S+,T-,V+,X+,Y+}
+{$M 16384,0,655360}
+Var Cm,C,C1,C2,C3,C4,C5,C6,C7,C8,Rm,R,R1,R2,R3,R4,R5,R6,R7,R8,Low,Hi:Extended;
+Begin
+WriteLn('Active Crossover 24db/Octave.',#13,#10,'By BokiC..');
+Low:=500;Hi:=5000;
+Write('Enter the low freq:');
+ReadLn(Low);
+Write('Enter the hi freq:');
+ReadLn(Hi);
+C:=(1/(2*Pi*Hi*20000))*1000000;
+Cm:=(1/(2*Pi*Low*20000))*1000000;
+C1:=C/2;
+C2:=(0.1931/(2*Pi*Low*10000))*1000000;
+C3:=(2.4553/(2*Pi*Low*10000))*1000000;
+C4:=(2.1089/(2*Pi*Low*10000))*1000000;
+C5:=C/2;
+C6:=(0.1931/(2*Pi*Hi*10000))*1000000;
+C7:=(2.4553/(2*Pi*Hi*10000))*1000000;
+C8:=(2.1089/(2*Pi*Hi*10000))*1000000;
+R:=10000;
+Rm:=10000;
+R1:=5.1766/(2*Pi*Hi*C)*1000000;
+R2:=0.4074/(2*Pi*Hi*C)*1000000;
+R3:=0.4742/(2*Pi*Hi*C)*1000000;
+R4:=20000;
+R5:=5.1766/(2*Pi*Low*C)*1000000;
+R6:=0.4074/(2*Pi*Low*C)*1000000;
+R7:=0.4742/(2*Pi*Low*C)*1000000;
+R8:=20000;
+WriteLn('C=',R:10:5);
+WriteLn('Cm=',Rm:10:5);
+WriteLn('C1=',R1:10:5);
+WriteLn('C2=',R2:10:5);
+WriteLn('C3=',R3:10:5);
+WriteLn('C4=',R4:10:5);
+WriteLn('C5=',R5:10:5);
+WriteLn('C6=',R6:10:5);
+WriteLn('C7=',R7:10:5);
+WriteLn('C8=',R8:10:5);
+WriteLn('R=',R:10:5);
+WriteLn('Rm=',Rm:10:5);
+WriteLn('R1=',R1:10:5);
+WriteLn('R2=',R2:10:5);
+WriteLn('R3=',R3:10:5);
+WriteLn('R4=',R4:10:5);
+WriteLn('R5=',R5:10:5);
+WriteLn('R6=',R6:10:5);
+WriteLn('R7=',R7:10:5);
+WriteLn('R8=',R8:10:5);
+ReadLn;
+End.
